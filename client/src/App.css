@@ -19,3 +19,7 @@ header{
 .title{
     @apply text-4xl md:text-5xl my-2 font-bold md:leading-snug leading-snug
 }
+
+.heartStar{
+    border-radius: 0 20px 0 20px;
+}

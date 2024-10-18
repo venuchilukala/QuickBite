@@ -6,17 +6,17 @@ export default {
   ],
   theme: {
     extend: {
-      colors : {
-        'green' : '#39DB4A',
-        'red' : '#FF6868',
-        'secondary' : '#555',
-        'primaryBg':'#FCFCFC'
+      colors: {
+        'green': '#39DB4A',
+        'red': '#FF6868',
+        'secondary': '#555',
+        'primaryBg': '#FCFCFC'
       },
       // fontFamily : {
       //   'primary' : ["Inter", 'sans-serif']
       // }
     },
   },
-  plugins: [],
+  plugins: [require('daisyui')],
 }
 

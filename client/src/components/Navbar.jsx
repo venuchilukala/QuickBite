@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import logo from "/logo.png";
-import { BiPhoneCall } from "react-icons/bi";
+import { FaRegUser } from "react-icons/fa";
+import Modal from "./Modal";
+
+
 const Navbar = () => {
   const [isSticky, setSticky] = useState(false);
 
@@ -64,7 +67,13 @@ const Navbar = () => {
 
   return (
     <header className="container max-w-screen-2xl mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out">
-      <div className={`navbar xl:px-24 ${isSticky ? 'shadow-md bg-base-100 transition-all duration-300 ease-in-out':''}`}>
+      <div
+        className={`navbar xl:px-24 ${
+          isSticky
+            ? "shadow-md bg-base-100 transition-all duration-300 ease-in-out"
+            : ""
+        }`}
+      >
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -141,9 +150,13 @@ const Navbar = () => {
           </div>
 
           {/* btn */}
-          <a className="btn bg-green text-white rounded-full flex items-center px-6 gap-2">
-            <BiPhoneCall /> Contact
-          </a>
+          <button
+            className="btn bg-green text-white rounded-full flex items-center px-6 gap-2"
+            onClick={() => document.getElementById("my_modal_5").showModal()}
+          >
+            <FaRegUser /> Login
+          </button> 
+          <Modal/>
         </div>
       </div>
     </header>

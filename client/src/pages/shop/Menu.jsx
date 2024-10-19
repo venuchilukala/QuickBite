@@ -88,7 +88,7 @@ const Menu = () => {
     <div>
       {/* Menu Banner */}
       <div className="section-container bg-gradient-to-r from-[#FAFAFA] from-0% to-[#FCFCFC] to-100%">
-        <div className="md:py-40 flex flex-col  justify-center items-center gap-8">
+        <div className="py-20 md:py-40 flex flex-col  justify-center items-center gap-8">
           {/* text */}
           <div className="text-center space-y-8 px-2 ">
             <h2 className="md:text-5xl text-4xl font-bold md:leading-snug leading-snug">

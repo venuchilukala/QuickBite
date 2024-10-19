@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { FaFacebookF, FaGoogle, FaInstagram } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, replace, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Modal from "./Modal";
+import { AuthContext } from "../contexts/AuthProvider";
 
 const Signup = () => {
   const {
@@ -11,7 +12,29 @@ const Signup = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const [errorMessage, setErrorMessage] = useState("");
+  const { createUser } = useContext(AuthContext);
+
+  //Redirection to home page or specifing page
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+
+  const onSubmit = (data) => {
+    const email = data.email;
+    const password = data.password;
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        alert("Account Creation Successfully done!!!");
+        document.getElementById("my_modal_5").close();
+        navigate(from, {replace : true})
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        setErrorMessage(errorMessage);
+      });
+  };
 
   return (
     <div className="max-w-md bg-white shadow w-full mx-auto flex items-center justify-center my-20">
@@ -57,6 +80,11 @@ const Signup = () => {
           </div>
 
           {/* Error Message */}
+          {errorMessage ? (
+            <p className="text-red text-xs italic">{errorMessage}</p>
+          ) : (
+            ""
+          )}
 
           {/* Login Button */}
           <div className="form-control mt-6">
@@ -69,16 +97,20 @@ const Signup = () => {
           <p className="text-center my-2">
             {" "}
             Have an account?
-            <button className="underline text-center text-red ml-2" onClick={() => document.getElementById("my_modal_5").showModal()}>
+            <button
+              className="underline text-center text-red ml-2"
+              onClick={() => document.getElementById("my_modal_5").showModal()}
+            >
               Login
             </button>
           </p>
-          <Link to="/"
-              onClick={() => document.getElementById("my_modal_5").close()}
-              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-            >
-              ✕
-            </Link>
+          <Link
+            to="/"
+            onClick={() => document.getElementById("my_modal_5").close()}
+            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+          >
+            ✕
+          </Link>
         </form>
 
         {/* Social Login Options */}
@@ -94,7 +126,7 @@ const Signup = () => {
           </button>
         </div>
       </div>
-      <Modal/>
+      <Modal />
     </div>
   );
 };

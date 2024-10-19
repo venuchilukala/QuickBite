@@ -7,6 +7,8 @@ const Menu = () => {
   const [filteredItems, setFilteredItems] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [sortOption, setSortOption] = useState("default");
+  const [currentPage, setCurrentPage] = useState(1)
+  const [itemsPerPage] = useState(8)
 
   // Loading data
   useEffect(() => {
@@ -38,6 +40,7 @@ const Menu = () => {
 
     setFilteredItems(filtered);
     setSelectedCategory(category);
+    setCurrentPage(1)
   };
 
   //   Show all items
@@ -45,6 +48,7 @@ const Menu = () => {
     console.log(menu);
     setFilteredItems(menu);
     setSelectedCategory("all");
+    setCurrentPage(1)
   };
 
   //   sorting bases on dropdown value
@@ -71,8 +75,15 @@ const Menu = () => {
         break;
     }
     setFilteredItems(sortedItems);
+    setCurrentPage(1)
   };
 
+  //Pagination Logic 
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage ;
+  const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem) 
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+  
   return (
     <div>
       {/* Menu Banner */}
@@ -163,10 +174,25 @@ const Menu = () => {
 
         {/* item Cards */}
         <div className="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4">
-          {filteredItems.map((item) => (
+          {currentItems.map((item) => (
             <Cards key={item._id} item={item} />
           ))}
         </div>
+      </div>
+
+      {/* Pagination */}
+      <div className="flex justify-center my-8">
+        {
+          Array.from({length : Math.ceil(filteredItems.length / itemsPerPage)}).map((_, index)=>(
+            <button 
+              key={index+1}
+              onClick={() => paginate(index + 1)}
+              className={`mx-3 px-3 py-1 rounded-full ${currentPage === index + 1 ? "bg-green text-white" : "bg-gray-200"}`}
+            >
+              {index + 1}
+            </button>
+          ))
+        }
       </div>
     </div>
   );

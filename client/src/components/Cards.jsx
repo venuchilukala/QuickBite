@@ -13,7 +13,7 @@ const Cards = (props) => {
   }
 
   return (
-    <div className="card bg-base-100 w-96 shadow-xl">
+    <div className="card bg-base-100 shadow-xl ">
         <div className={`rating gap-1 absolute p-4 right-2 top-2 heartStar bg-green  ${isHeartFilled ? 'text-rose-500' : 'text-white'}`} onClick={handleHeartClick}>
             <FaHeart className="h-5 w-5 cursor-pointer"/>
         </div>

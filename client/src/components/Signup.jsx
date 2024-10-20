@@ -13,7 +13,7 @@ const Signup = () => {
   } = useForm();
 
   const [errorMessage, setErrorMessage] = useState("");
-  const { createUser } = useContext(AuthContext);
+  const { createUser, signUpWithGmail } = useContext(AuthContext);
 
   //Redirection to home page or specifing page
   const location = useLocation();
@@ -28,11 +28,23 @@ const Signup = () => {
         const user = result.user;
         alert("Account Creation Successfully done!!!");
         document.getElementById("my_modal_5").close();
-        navigate(from, {replace : true})
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const errorMessage = error.message;
         setErrorMessage(errorMessage);
+      });
+  };
+
+  const handleLogin = () => {
+    signUpWithGmail()
+      .then((result) => {
+        const user = result.user;
+        alert("Login Successful");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
@@ -72,11 +84,6 @@ const Signup = () => {
               required
               {...register("password")}
             />
-            {/* <label className="label mt-1">
-              <a href="#" className="label-text-alt link link-hover">
-                Forgot password?
-              </a>
-            </label> */}
           </div>
 
           {/* Error Message */}
@@ -115,7 +122,10 @@ const Signup = () => {
 
         {/* Social Login Options */}
         <div className="text-center space-x-4 mb-5">
-          <button className="btn btn-circle hover:bg-green hover:text-white">
+          <button
+            onClick={handleLogin}
+            className="btn btn-circle hover:bg-green hover:text-white"
+          >
             <FaGoogle />
           </button>
           <button className="btn btn-circle hover:bg-green hover:text-white">

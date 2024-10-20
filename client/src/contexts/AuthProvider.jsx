@@ -37,14 +37,14 @@ const AuthProvider = ({ children }) => {
 
   //logout
   const logOut = () => {
-    signOut(auth);
+    return signOut(auth);
   };
 
   //Update user profile
-  const UpdateUserProfile = ({ name, photoUrl }) => {
+  const UpdateUserProfile = ({ name, photoURL }) => {
     return updateProfile(auth.currentUser, {
       displayName: name,
-      photoURL: photoUrl,
+      photoURL: photoURL,
     });
   };
 

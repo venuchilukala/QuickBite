@@ -11,38 +11,42 @@ const Modal = () => {
     formState: { errors },
   } = useForm();
 
-  const {signUpWithGmail, login} = useContext(AuthContext)
-  const [errorMessage, setErrorMessage] = useState("")
+  const { signUpWithGmail, login } = useContext(AuthContext);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  //Redirection to home page or specifing page 
-  const location  = useLocation()
-  const navigate = useNavigate()
-  const from = location.state?.from?.pathname || "/"
-  
-  const onSubmit = (data) =>{
+  //Redirection to home page or specifing page
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+
+  const onSubmit = (data) => {
     const email = data.email;
     const password = data.password;
     console.log(email, password);
-    login(email, password).then((result) =>{
-      const user = result.user;
-      alert("Login Successful")
-      document.getElementById("my_modal_5").close()
-      navigate(from, {replace : true})
-    }).catch((error) =>{
-      const errorMessage = error.message;
-      setErrorMessage('Provide a correct email and password')
-    })
-  } 
-  
+    login(email, password)
+      .then((result) => {
+        const user = result.user;
+        alert("Login Successful");
+        document.getElementById("my_modal_5").close();
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        setErrorMessage("Provide a correct email and password");
+      });
+  };
+
   //
-  const handleLogin = ()=>{
-    signUpWithGmail().then((result)=>{
-      const user = result.user;
-      alert("Login Successful")
-    }).catch((error) =>{
-      console.log(error)
-    })
-  }
+  const handleLogin = () => {
+    signUpWithGmail()
+      .then((result) => {
+        const user = result.user;
+        alert("Login Successful");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <dialog id="my_modal_5" className="modal modal-middle sm:modal-middle">
@@ -87,9 +91,11 @@ const Modal = () => {
             </div>
 
             {/* Error Message */}
-            {
-              errorMessage ? <p className="text-red text-xs italic">{errorMessage}</p> :""
-            }
+            {errorMessage ? (
+              <p className="text-red text-xs italic">{errorMessage}</p>
+            ) : (
+              ""
+            )}
 
             {/* Login Button */}
             <div className="form-control mt-6">
@@ -104,6 +110,8 @@ const Modal = () => {
               Don't have an account?
               <Link
                 to="/signup"
+                
+                onClick={() => document.getElementById("my_modal_5").close()}
                 className="underline text-center text-red ml-2"
               >
                 Signup Now
@@ -120,7 +128,10 @@ const Modal = () => {
 
           {/* Social Login Options */}
           <div className="text-center space-x-4 mb-5">
-            <button className="btn btn-circle hover:bg-green hover:text-white" onClick={handleLogin}>
+            <button
+              className="btn btn-circle hover:bg-green hover:text-white"
+              onClick={handleLogin}
+            >
               <FaGoogle />
             </button>
             <button className="btn btn-circle hover:bg-green hover:text-white">

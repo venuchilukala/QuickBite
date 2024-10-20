@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../contexts/AuthProvider";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Profile = (props) => {
   const { user } = props;
+  const {logOut} = useContext(AuthContext)
+
+  const location  = useLocation()
+  const navigate = useNavigate()
+  const from = location.state?.from?.pathname || "/signup"
+
+  const handleLogout = () =>{
+    logOut().then(()=>{
+      alert("Account Logged out")
+      // document.getElementById("my_modal_5").close()
+      navigate(from, {replace : true})
+      
+    }).catch((error)=>{
+      console.log(error.message)
+    })
+  }
+
   return (
     <div>
       <div className="drawer drawer-end z-10">
@@ -18,7 +37,7 @@ const Profile = (props) => {
               ) : (
                 <img
                   alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  src="https://th.bing.com/th/id/OIP.H3mX3rpQDrVXLOFxWMD0dAHaHa?w=219&h=218&c=7&r=0&o=5&dpr=1.3&pid=1.7"
                 />
               )}
             </div>
@@ -33,7 +52,7 @@ const Profile = (props) => {
           <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
             {/* Sidebar content here */}
             <li>
-              <a>Profile</a>
+              <a href="/update-profile">Profile</a>
             </li>
             <li>
               <a>Orders</a>
@@ -42,7 +61,7 @@ const Profile = (props) => {
               <a>Settings</a>
             </li>
             <li>
-              <a>Logout</a>
+              <a onClick={handleLogout}>Logout</a>
             </li>
           </ul>
         </div>

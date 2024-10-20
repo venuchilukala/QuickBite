@@ -1,6 +1,116 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import useCart from "../../hooks/useCart";
+import { FaTrash } from "react-icons/fa";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const CartPage = () => {
+  const [cart, refetch] = useCart();
+  const { user } = useContext(AuthContext);
+  const [cartItems, setCartItems] = useState([]);
+
+  //Calculate Price
+  const calculatePrice = (item) => {
+    return item.price * item.quantity;
+  };
+
+//Handle Increase button
+  const handleIncrease = (item) => {
+    fetch(`http://localhost:6001/carts/${item._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify({ quantity: item.quantity + 1 }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const updatedCart = cartItems.map((cartItem) => {
+          if (item._id === cartItem._id) {
+            return {
+              ...cartItem,
+              quantity: cartItem.quantity + 1,
+            };
+          }
+          return cartItem;
+        });
+
+        setCartItems(updatedCart);
+      })
+      .catch((error) => {
+        console.error("Error updating cart:", error);
+      });
+    // Refetch the updated cart data
+    refetch();
+  };
+
+  //Handle decrease button
+  const handleDecrease = (item) => {
+    if (item.quantity > 1) {
+      fetch(`http://localhost:6001/carts/${item._id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json; charset=UTF-8",
+        },
+        body: JSON.stringify({ quantity: item.quantity - 1 }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          const updatedCart = cartItems.map((cartItem) => {
+            if (item._id === cartItem._id) {
+              return {
+                ...cartItem,
+                quantity: cartItem.quantity - 1,
+              };
+            }
+            return cartItem;
+          });
+
+          setCartItems(updatedCart);
+        })
+        .catch((error) => {
+          console.error("Error updating cart:", error);
+        });
+      // Refetch the updated cart data
+      refetch();
+    }
+    else{
+      alert("Item can't be less than zero")
+    }
+  };
+
+  //Handle delete item button
+  const handleDelete = (item) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:6001/carts/${item._id}`, { method: "DELETE" })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              refetch();
+              Swal.fire({
+                title: "Deleted!",
+                text: "Item has been deleted.",
+                icon: "success",
+              });
+            }
+          });
+      }
+    });
+  };
+
+  const orderSubTotal = cart.reduce((total, item) => {
+    return total + calculatePrice(item)
+  },0)
+
   return (
     <div className="section-container">
       {/* Banner Section */}
@@ -30,38 +140,71 @@ const CartPage = () => {
             </tr>
           </thead>
           <tbody>
-            {/* row 1 */}
-            <tr>
-              <td>
-                <div className="flex items-center gap-3">
+            {/* row items */}
+            {cart.map((item, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>
                   <div className="avatar">
                     <div className="mask mask-squircle h-12 w-12">
-                      <img
-                        src="https://img.daisyui.com/images/profile/demo/2@94.webp"
-                        alt="Avatar Tailwind CSS Component"
-                      />
+                      <img src={item.image} alt={item.name} />
                     </div>
                   </div>
+                </td>
+                <th>{item.name}</th>
+                <td>
                   <div>
-                    <div className="font-bold">Hart Hagerty</div>
-                    <div className="text-sm opacity-50">United States</div>
+                    <button
+                      className="btn btn-xs"
+                      onClick={() => handleDecrease(item)}
+                    >
+                      -
+                    </button>
+                    <input
+                      type="number"
+                      name=""
+                      id=""
+                      value={item.quantity}
+                      className="w-8 mx-2 text-center overflow-hidden appearance-none"
+                    />
+                    <button
+                      className="btn btn-xs"
+                      onClick={() => handleIncrease(item)}
+                    >
+                      +
+                    </button>
                   </div>
-                </div>
-              </td>
-              <td>
-                Zemlak, Daniel and Leannon
-                <br />
-                <span className="badge badge-ghost badge-sm">
-                  Desktop Support Technician
-                </span>
-              </td>
-              <td>Purple</td>
-              <th>
-                <button className="btn btn-ghost btn-xs">details</button>
-              </th>
-            </tr>
+                </td>
+                <td>&#8377;{calculatePrice(item)}</td>
+                <td>
+                  <button
+                    className="btn btn-ghost text-rose-600 btn-xs"
+                    onClick={() => handleDelete(item)}
+                  >
+                    <FaTrash />
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
+      </div>
+
+      {/* Customer details and Shop details */}
+      <div className="my-12 flex flex-col md:flex-row justify-between md:items-center gap-4">
+        <div className="md:w-1/2 space-y-3">
+          <h3 className="font-semibold">Customer Details</h3>
+          <p>Name : {user.displayName}</p>
+          <p>Email : {user.email}</p>
+          <p> user_id : {user.uid}</p>
+        </div>
+        {/* Cart Details */}
+        <div className="md:w-1/2 space-y-3">
+          <h3 className="font-semibold">Cart Details</h3>
+          <p>Total Items : {cart.length}</p>
+          <p>Total Price : &#8377;{orderSubTotal.toFixed(2)}</p>
+          <button className="btn bg-green text-white">Proceed Checkout</button>
+        </div>
       </div>
     </div>
   );

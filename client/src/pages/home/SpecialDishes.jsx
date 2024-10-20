@@ -19,17 +19,17 @@ const simpleNextArrow = (props) => {
 };
 
 const simplePrevArrow = (props) => {
-    const { className, style, onclick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "green" }}
-        onClick={onclick}
-      >
-        Back
-      </div>
-    );
-  };
+  const { className, style, onclick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "green" }}
+      onClick={onclick}
+    >
+      Back
+    </div>
+  );
+};
 
 const SpecialDishes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -38,9 +38,9 @@ const SpecialDishes = () => {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch("/menu.json");
+      const response = await fetch("http://localhost:6001/menu");
       const data = await response.json();
-      const specials = data.filter((item) => item.category === "popular");
+      const specials = data.filter((item) => item.category === "main course");
       setRecipes(specials);
     })();
   }, []);
@@ -79,8 +79,8 @@ const SpecialDishes = () => {
         },
       },
     ],
-    nextArrow : <simpleNextArrow/>,
-    prevArrow : <simplePrevArrow/>
+    nextArrow: <simpleNextArrow />,
+    prevArrow: <simplePrevArrow />,
   };
 
   return (
@@ -91,17 +91,33 @@ const SpecialDishes = () => {
       </div>
       {/* Arrows to slide */}
       <div className="md:absolute right-3 top-8 mb-10 md:mr-24">
-        <button onClick={()=>{slider?.current?.slickPrev()}} className="btn p-2 rounded-full ml-5">
-            <FaAngleLeft className="h-8 w-8 p-1"/>
+        <button
+          onClick={() => {
+            slider?.current?.slickPrev();
+          }}
+          className="btn p-2 rounded-full ml-5"
+        >
+          <FaAngleLeft className="h-8 w-8 p-1" />
         </button>
-        <button onClick={()=>{slider?.current?.slickNext()}} className="btn p-2 rounded-full ml-5 bg-green">
-            <FaAngleRight className="h-8 w-8 p-1 text-white"/>
+        <button
+          onClick={() => {
+            slider?.current?.slickNext();
+          }}
+          className="btn p-2 rounded-full ml-5 bg-green"
+        >
+          <FaAngleRight className="h-8 w-8 p-1 text-white" />
         </button>
       </div>
       <div>
-        <Slider ref={slider} {...settings} className="overflow-hidden mt-5 space-x-5">
+        <Slider
+          ref={slider}
+          {...settings}
+          className="overflow-hidden mt-5 space-x-5"
+        >
           {recipes.map((item, i) => (
-            <Cards key={i} item={item} />
+            <div>
+              <Cards key={i} item={item} />
+            </div>
           ))}
         </Slider>
       </div>

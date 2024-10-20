@@ -1,36 +1,108 @@
-import React, { useState } from "react";
-import {Link} from "react-router-dom"
-import {FaHeart} from "react-icons/fa"
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { FaHeart } from "react-icons/fa";
+import { AuthContext } from "../contexts/AuthProvider";
+import Swal from "sweetalert2";
 
 const Cards = (props) => {
   const { item } = props;
   const { _id, name, recipe, image, category, price } = item;
 
-  const [isHeartFilled, setIsHeartFilled] = useState(false)
+  const [isHeartFilled, setIsHeartFilled] = useState(false);
+  const { user } = useContext(AuthContext);
+  
+  const location = useLocation()
+  const navigate = useNavigate()
 
-  const handleHeartClick = ()=>{
-    setIsHeartFilled(!isHeartFilled)
-  }
+  //Add to cart Button
+  const handleAddtoCart = (item) => {
+    if (user && user?.email) {
+      const cartItem = {
+        menuId: _id,
+        name,
+        quantity: 1,
+        image,
+        price,
+        email: user.email,
+      };
+      // console.log("button is clicked", item)
+      fetch("http://localhost:6001/carts", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(cartItem),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          if (data.insertedId) {
+            Swal.fire({
+              // position: "top-end",
+              icon: "success",
+              title: "Item Added to the Cart",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
+    } else {
+      Swal.fire({
+        title: "Login Required?",
+        text: "Without login you can't add items to cart!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Signup Now",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate('/signup', {state : {from : location}})
+        }
+      });
+    }
+  };
+
+  //Add to Favourite button
+  const handleHeartClick = () => {
+    setIsHeartFilled(!isHeartFilled);
+  };
 
   return (
     <div className="card bg-base-100 shadow-xl ">
-        <div className={`rating gap-1 absolute p-4 right-2 top-2 heartStar bg-green  ${isHeartFilled ? 'text-rose-500' : 'text-white'}`} onClick={handleHeartClick}>
-            <FaHeart className="h-5 w-5 cursor-pointer"/>
-        </div>
+      <div
+        className={`rating gap-1 absolute p-4 right-2 top-2 heartStar bg-green  ${
+          isHeartFilled ? "text-rose-500" : "text-white"
+        }`}
+        onClick={handleHeartClick}
+      >
+        <FaHeart className="h-5 w-5 cursor-pointer" />
+      </div>
       <Link to={`/menu/${_id}`}>
         <figure>
-          <img src={image} alt={name} className="hover:scale-105 transition-all duration-200 md:h-72"/>
+          <img
+            src={image}
+            alt={name}
+            className="hover:scale-105 transition-all duration-200 md:h-72"
+          />
         </figure>
       </Link>
       <div className="card-body">
-        <Link to={`/menu/${_id}`}><h2 className="card-title">{name}</h2></Link>
+        <Link to={`/menu/${_id}`}>
+          <h2 className="card-title">{name}</h2>
+        </Link>
         <p>{recipe}</p>
         <div className="card-actions justify-between items-center mt-2">
           <h5 className="font-semibold flex gap-2">
             <span className="text-sm text-red">$</span>
             {price}
           </h5>
-          <button className="btn bg-green text-white">Buy Now</button>
+          <button
+            className="btn bg-green text-white"
+            onClick={() => handleAddtoCart(item)}
+          >
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>

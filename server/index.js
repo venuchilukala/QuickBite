@@ -24,9 +24,35 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
-    // Send a ping to confirm a successful connection
+    
+    //database and collection
+    const menuCollections = client.db("quickbite-db").collection("menus")
+    const cartCollections = client.db("quickbite-db").collection("cartItems")
+    
+    //all menu items operation
+    app.get('/menu', async(req, res)=>{
+        const result = await menuCollections.find().toArray();
+        res.send(result);
+    })
+
+    //Cart Operations :==>
+    //adding cart item to db
+    app.post('/carts', async(req, res) =>{
+      const cartItem = req.body;
+      const result = await cartCollections.insertOne(cartItem)
+      res.send(result)
+    })
+
+    //get cart items based on email
+    app.get('/carts', async(req, res) =>{
+      const email = req.query.email 
+      const filter = {email : email}
+      const result  = await cartCollections.find(filter).toArray()
+      res.send(result)
+    })
+
+
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {

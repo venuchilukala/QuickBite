@@ -15,7 +15,7 @@ const Menu = () => {
     //Fetchind data from backend
     const fetchedData = async () => {
       try {
-        const response = await fetch("/menu.json");
+        const response = await fetch("http://localhost:6001/menu");
         const data = await response.json();
         // console.log(data)
         setMenu(data);
@@ -85,7 +85,7 @@ const Menu = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber)
   
   return (
-    <div>
+    <div className="flex flex-col">
       {/* Menu Banner */}
       <div className="section-container bg-gradient-to-r from-[#FAFAFA] from-0% to-[#FCFCFC] to-100%">
         <div className="py-20 md:py-40 flex flex-col  justify-center items-center gap-8">
@@ -119,34 +119,58 @@ const Menu = () => {
               All
             </button>
             <button
-              onClick={() => filterItems("salad")}
-              className={selectedCategory === "salad" ? "active" : ""}
+              onClick={() => filterItems("biryanis")}
+              className={selectedCategory === "biryanis" ? "active" : ""}
+            >
+              Biryanis
+            </button>
+            <button
+              onClick={() => filterItems("veg meals")}
+              className={selectedCategory === "veg meals" ? "active" : ""}
+            >
+              Veg Meals
+            </button>
+            <button
+              onClick={() => filterItems("non veg meals")}
+              className={selectedCategory === "non veg meals" ? "active" : ""}
+            >
+              Non Veg Meals
+            </button>
+            <button
+              onClick={() => filterItems("starters")}
+              className={selectedCategory === "starters" ? "active" : ""}
+            >
+              Starters
+            </button>
+            <button
+              onClick={() => filterItems("salads")}
+              className={selectedCategory === "salads" ? "active" : ""}
             >
               Salads
             </button>
             <button
-              onClick={() => filterItems("pizza")}
-              className={selectedCategory === "pizza" ? "active" : ""}
+              onClick={() => filterItems("pizzas")}
+              className={selectedCategory === "pizzas" ? "active" : ""}
             >
               Pizzas
             </button>
             <button
-              onClick={() => filterItems("soup")}
-              className={selectedCategory === "soup" ? "active" : ""}
+              onClick={() => filterItems("soups")}
+              className={selectedCategory === "soups" ? "active" : ""}
             >
               Soups
             </button>
             <button
-              onClick={() => filterItems("dessert")}
-              className={selectedCategory === "dessert" ? "active" : ""}
+              onClick={() => filterItems("desserts")}
+              className={selectedCategory === "desserts" ? "active" : ""}
             >
               Desserts
             </button>
             <button
-              onClick={() => filterItems("drinks")}
-              className={selectedCategory === "drinks" ? "active" : ""}
+              onClick={() => filterItems("beverages")}
+              className={selectedCategory === "beverages" ? "active" : ""}
             >
-              Drinks
+              Beverages
             </button>
           </div>
 

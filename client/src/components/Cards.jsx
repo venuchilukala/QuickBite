@@ -71,7 +71,7 @@ const Cards = (props) => {
   return (
     <div className="card bg-base-100 shadow-xl ">
       <div
-        className={`rating gap-1 absolute p-4 right-2 top-2 heartStar bg-green  ${
+        className={`rating gap-1 absolute p-4 right-2 top-2 heartStar bg-green z-10 ${
           isHeartFilled ? "text-rose-500" : "text-white"
         }`}
         onClick={handleHeartClick}

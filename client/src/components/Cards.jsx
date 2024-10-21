@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { AuthContext } from "../contexts/AuthProvider";
 import Swal from "sweetalert2";
+import useCart from "../hooks/useCart";
 
 const Cards = (props) => {
   const { item } = props;
@@ -10,22 +11,22 @@ const Cards = (props) => {
 
   const [isHeartFilled, setIsHeartFilled] = useState(false);
   const { user } = useContext(AuthContext);
-  
-  const location = useLocation()
-  const navigate = useNavigate()
+  const [cart, refetch] = useCart()
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   //Add to cart Button
   const handleAddtoCart = (item) => {
     if (user && user?.email) {
       const cartItem = {
-        menuId: _id,
+        menuItemId: _id,
         name,
         quantity: 1,
         image,
         price,
         email: user.email,
       };
-      // console.log("button is clicked", item)
       fetch("http://localhost:6001/carts", {
         method: "POST",
         headers: {
@@ -35,16 +36,20 @@ const Cards = (props) => {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
-          if (data.insertedId) {
+          if (data.menuItemId) {
             Swal.fire({
-              // position: "top-end",
               icon: "success",
               title: "Item Added to the Cart",
               showConfirmButton: false,
               timer: 1500,
             });
+          } else {
+            Swal.fire({
+              icon: "warning",
+              title: "Item Already in the Cart!",
+            });
           }
+          refetch()
         });
     } else {
       Swal.fire({
@@ -57,7 +62,7 @@ const Cards = (props) => {
         confirmButtonText: "Signup Now",
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate('/signup', {state : {from : location}})
+          navigate("/signup", { state: { from: location } });
         }
       });
     }

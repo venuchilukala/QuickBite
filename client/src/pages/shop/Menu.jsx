@@ -17,7 +17,7 @@ const Menu = () => {
       try {
         const response = await fetch("http://localhost:6001/menu");
         const data = await response.json();
-        // console.log(data)
+        console.log("Data", data)
         setMenu(data);
         setFilteredItems(data);
       } catch (error) {
@@ -36,7 +36,7 @@ const Menu = () => {
         ? menu
         : menu.filter((item) => item.category === category);
 
-    console.log(filtered);
+    console.log("Filtered",filtered);
 
     setFilteredItems(filtered);
     setSelectedCategory(category);
@@ -198,6 +198,7 @@ const Menu = () => {
 
         {/* item Cards */}
         <div className="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4">
+          {console.log('currentItems',currentItems)}
           {currentItems.map((item) => (
             <Cards key={item._id} item={item} />
           ))}

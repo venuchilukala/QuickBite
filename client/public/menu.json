@@ -1,6 +1,5 @@
 [
     {
-        "_id": "642c155b2c4774f05c36ee7d1",
         "name": "Margherita Pizza",
         "recipe": "Classic pizza topped with fresh tomatoes, mozzarella cheese, and basil.",
         "image": "/images/recipes/pizza1.jpg",
@@ -8,7 +7,6 @@
         "price": 250
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d2",
         "name": "Pepperoni Pizza",
         "recipe": "Savory pizza topped with pepperoni slices and mozzarella cheese.",
         "image": "/images/recipes/Pepperoni Pizza.jpg",
@@ -16,7 +14,6 @@
         "price": 300
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d3",
         "name": "Chicken Biryani",
         "recipe": "Aromatic basmati rice layered with spiced chicken and saffron.",
         "image": "/images/recipes/chicken_biryani.jpg",
@@ -24,7 +21,6 @@
         "price": 500
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d4",
         "name": "Veg Biryani",
         "recipe": "Flavorful basmati rice cooked with mixed vegetables and spices.",
         "image": "/images/recipes/veg_biryani.jpg",
@@ -32,7 +28,6 @@
         "price": 400
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d5",
         "name": "Tomato Soup",
         "recipe": "Creamy tomato soup garnished with fresh basil.",
         "image": "/images/recipes/tomato_soup.jpg",
@@ -40,7 +35,6 @@
         "price": 150
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d6",
         "name": "Mushroom Soup",
         "recipe": "Rich and hearty mushroom soup with cream.",
         "image": "/images/recipes/mushroom_soup.jpg",
@@ -48,7 +42,6 @@
         "price": 180
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d7",
         "name": "Garlic Bread",
         "recipe": "Bread topped with garlic and herbs, toasted until golden.",
         "image": "/images/recipes/garlic_bread.jpg",
@@ -56,7 +49,6 @@
         "price": 100
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d8",
         "name": "French Fries",
         "recipe": "Crispy fried potatoes, served with ketchup.",
         "image": "/images/recipes/french_fries.jpg",
@@ -64,7 +56,6 @@
         "price": 150
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d9",
         "name": "Veg Combo Meal",
         "recipe": "A platter with rice, dal, vegetable curry, and salad.",
         "image": "/images/recipes/veg_combo_meal.jpg",
@@ -72,7 +63,6 @@
         "price": 250
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d10",
         "name": "Non-Veg Combo Meal",
         "recipe": "A platter with rice, chicken curry, and raita.",
         "image": "/images/recipes/non_veg_combo_meal.jpg",
@@ -80,7 +70,6 @@
         "price": 600
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d11",
         "name": "Paneer Butter Masala",
         "recipe": "Paneer cubes cooked in a rich tomato gravy with butter and cream.",
         "image": "/images/recipes/paneer_butter_masala.jpg",
@@ -88,7 +77,6 @@
         "price": 325
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d12",
         "name": "Tandoori Chicken",
         "recipe": "Marinated chicken cooked in a traditional clay oven, served with mint chutney.",
         "image": "/images/recipes/tandoori_chicken.jpg",
@@ -96,7 +84,6 @@
         "price": 450
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d13",
         "name": "Caesar Salad",
         "recipe": "Fresh romaine lettuce with Caesar dressing, croutons, and parmesan cheese.",
         "image": "/images/recipes/caesar_salad.jpg",
@@ -104,7 +91,6 @@
         "price": 250
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d14",
         "name": "Greek Salad",
         "recipe": "Crisp vegetables, olives, and feta cheese dressed in olive oil.",
         "image": "/images/recipes/greek_salad.jpg",
@@ -112,7 +98,6 @@
         "price": 300
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d15",
         "name": "Fruit Salad",
         "recipe": "A mix of seasonal fruits served with a honey dressing.",
         "image": "/images/recipes/fruit_salad.jpg",
@@ -120,7 +105,6 @@
         "price": 150
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d16",
         "name": "Pasta Salad",
         "recipe": "Pasta mixed with vegetables and a tangy dressing.",
         "image": "/images/recipes/pasta_salad.jpg",
@@ -128,7 +112,6 @@
         "price": 200
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d17",
         "name": "Quinoa Salad",
         "recipe": "Nutritious quinoa with mixed greens, tomatoes, and dressing.",
         "image": "/images/recipes/quinoa_salad.jpg",
@@ -136,7 +119,6 @@
         "price": 250
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d18",
         "name": "Chocolate Cake",
         "recipe": "Moist chocolate cake layered with rich chocolate frosting.",
         "image": "/images/recipes/chocolate_cake.jpg",
@@ -144,7 +126,6 @@
         "price": 300
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d19",
         "name": "Cheesecake",
         "recipe": "Creamy cheesecake with a graham cracker crust and fruit topping.",
         "image": "/images/recipes/cheesecake.jpg",
@@ -152,7 +133,6 @@
         "price": 400
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d20",
         "name": "Fruit Tart",
         "recipe": "Tart filled with custard and topped with fresh fruits.",
         "image": "/images/recipes/fruit_tart.jpg",
@@ -160,7 +140,6 @@
         "price": 350
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d21",
         "name": "Panna Cotta",
         "recipe": "Italian dessert made with sweetened cream thickened with gelatin.",
         "image": "/images/recipes/panna_cotta.jpg",
@@ -168,7 +147,6 @@
         "price": 250
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d22",
         "name": "Brownie",
         "recipe": "Fudgy chocolate brownie served with ice cream.",
         "image": "/images/recipes/brownie.jpg",
@@ -176,7 +154,6 @@
         "price": 150
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d23",
         "name": "Ice Cream Sundae",
         "recipe": "Scoops of ice cream topped with chocolate syrup and nuts.",
         "image": "/images/recipes/ice_cream_sundae.jpg",
@@ -184,7 +161,6 @@
         "price": 200
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d24",
         "name": "Lentil Soup",
         "recipe": "Healthy lentil soup made with vegetables and spices.",
         "image": "/images/recipes/lentil_soup.jpg",
@@ -192,7 +168,6 @@
         "price": 120
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d25",
         "name": "Chicken Noodle Soup",
         "recipe": "Comforting soup with chicken, noodles, and vegetables.",
         "image": "/images/recipes/chicken_noodle_soup.jpg",
@@ -200,7 +175,6 @@
         "price": 200
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d26",
         "name": "Onion Rings",
         "recipe": "Crispy battered onion rings served with dipping sauce.",
         "image": "/images/recipes/onion_rings.jpg",
@@ -208,7 +182,6 @@
         "price": 100
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d27",
         "name": "Stuffed Naan",
         "recipe": "Naan stuffed with cheese and herbs, served with curry.",
         "image": "/images/recipes/stuffed_naaan.jpg",
@@ -216,7 +189,6 @@
         "price": 150
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d28",
         "name": "Chickpea Salad",
         "recipe": "Chickpeas mixed with onions, tomatoes, and spices.",
         "image": "/images/recipes/chickpea_salad.jpg",
@@ -224,7 +196,6 @@
         "price": 180
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d29",
         "name": "Caprese Salad",
         "recipe": "Fresh mozzarella, tomatoes, and basil drizzled with balsamic glaze.",
         "image": "/images/recipes/caprese_salad.jpg",
@@ -232,7 +203,6 @@
         "price": 220
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d30",
         "name": "Tandoori Paneer Tikka",
         "recipe": "Marinated paneer grilled with vegetables and spices.",
         "image": "/images/recipes/tandoori_paneer_tikka.jpg",
@@ -240,7 +210,6 @@
         "price": 350
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d31",
         "name": "BBQ Chicken Pizza",
         "recipe": "Pizza topped with BBQ chicken, red onions, and cilantro.",
         "image": "/images/recipes/bbq_chicken_pizza.jpg",
@@ -248,7 +217,6 @@
         "price": 320
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d32",
         "name": "Pesto Pasta",
         "recipe": "Pasta tossed in a creamy pesto sauce with cherry tomatoes.",
         "image": "/images/recipes/pesto_pasta.jpg",
@@ -256,7 +224,6 @@
         "price": 280
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d33",
         "name": "Fish Curry",
         "recipe": "Spicy curry made with fish and coconut milk, served with rice.",
         "image": "/images/recipes/fish_curry.jpg",
@@ -264,339 +231,213 @@
         "price": 500
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d34",
         "name": "Vegetable Fried Rice",
         "recipe": "Stir-fried rice with mixed vegetables and soy sauce.",
         "image": "/images/recipes/vegetable_fried_rice.jpg",
-        "category": "veg meals",
+        "category": "main course",
         "price": 220
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d35",
-        "name": "Chili Chicken",
-        "recipe": "Spicy chicken stir-fried with bell peppers and chili sauce.",
-        "image": "/images/recipes/chili_chicken.jpg",
-        "category": "non veg meals",
-        "price": 400
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d36",
-        "name": "Palak Paneer",
-        "recipe": "Spinach and paneer cooked with spices, served with naan.",
-        "image": "/images/recipes/palak_paneer.jpg",
-        "category": "main course",
-        "price": 350
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d37",
-        "name": "Cheese Naan",
-        "recipe": "Naan stuffed with melted cheese, served with curry.",
-        "image": "/images/recipes/cheese_naaan.jpg",
-        "category": "starters",
-        "price": 200
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d38",
-        "name": "Tom Yum Soup",
-        "recipe": "Spicy Thai soup with shrimp, mushrooms, and herbs.",
-        "image": "/images/recipes/tom_yum_soup.jpg",
-        "category": "soups",
+        "name": "Chocolate Mousse",
+        "recipe": "Light and airy chocolate mousse topped with whipped cream.",
+        "image": "/images/recipes/chocolate_mousse.jpg",
+        "category": "desserts",
         "price": 250
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d39",
-        "name": "Chocolate Mousse",
-        "recipe": "Light and airy chocolate dessert topped with whipped cream.",
-        "image": "/images/recipes/chocolate_mousse.jpg",
-        "category": "desserts",
-        "price": 280
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d40",
-        "name": "Apple Pie",
-        "recipe": "Classic apple pie served warm with vanilla ice cream.",
-        "image": "/images/recipes/apple_pie.jpg",
-        "category": "desserts",
-        "price": 300
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d41",
-        "name": "Carrot Cake",
-        "recipe": "Moist carrot cake topped with cream cheese frosting.",
-        "image": "/images/recipes/carrot_cake.jpg",
-        "category": "desserts",
-        "price": 350
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d42",
-        "name": "Chowder Soup",
-        "recipe": "Rich and creamy soup with potatoes and corn.",
-        "image": "/images/recipes/chowder_soup.jpg",
-        "category": "soups",
-        "price": 230
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d43",
-        "name": "Samosas",
+        "name": "Vegetable Samosa",
         "recipe": "Crispy pastry filled with spiced potatoes and peas.",
-        "image": "/images/recipes/samosas.jpg",
+        "image": "/images/recipes/vegetable_samosa.jpg",
         "category": "starters",
         "price": 120
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d44",
-        "name": "Daal Makhani",
-        "recipe": "Creamy black lentils cooked with butter and spices.",
-        "image": "/images/recipes/daal_makhani.jpg",
-        "category": "main course",
-        "price": 300
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d45",
-        "name": "Shrimp Fried Rice",
-        "recipe": "Fried rice with shrimp, vegetables, and soy sauce.",
-        "image": "/images/recipes/shrimp_fried_rice.jpg",
-        "category": "non veg meals",
-        "price": 400
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d46",
-        "name": "Chicken Quesadilla",
-        "recipe": "Grilled tortilla filled with chicken and cheese.",
-        "image": "/images/recipes/chicken_quesadilla.jpg",
-        "category": "starters",
-        "price": 350
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d47",
         "name": "Paneer Tikka",
-        "recipe": "Grilled marinated paneer served with mint chutney.",
+        "recipe": "Grilled paneer marinated in spices, served with mint chutney.",
         "image": "/images/recipes/paneer_tikka.jpg",
         "category": "starters",
         "price": 250
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d48",
-        "name": "Lasagna",
-        "recipe": "Layered pasta with ricotta cheese, ground beef, and marinara sauce.",
-        "image": "/images/recipes/lasagna.jpg",
-        "category": "main course",
-        "price": 450
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d49",
-        "name": "Vegetable Spring Rolls",
-        "recipe": "Crispy rolls filled with mixed vegetables, served with dipping sauce.",
-        "image": "/images/recipes/vegetable_spring_rolls.jpg",
-        "category": "starters",
-        "price": 120
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d50",
-        "name": "Prawn Masala",
-        "recipe": "Spicy prawn dish cooked in a rich coconut and tomato sauce.",
-        "image": "/images/recipes/prawn_masala.jpg",
-        "category": "non veg meals",
-        "price": 500
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d51",
-        "name": "Paneer Tikka Masala",
-        "recipe": "Paneer cooked in a spicy and creamy tomato sauce.",
-        "image": "/images/recipes/paneer_tikka_masala.jpg",
+        "name": "Shrimp Fried Rice",
+        "recipe": "Fried rice stir-fried with shrimp and vegetables.",
+        "image": "/images/recipes/shrimp_fried_rice.jpg",
         "category": "main course",
         "price": 350
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d52",
-        "name": "Vegetable Manchurian",
-        "recipe": "Deep-fried vegetable balls in a tangy sauce.",
-        "image": "/images/recipes/vegetable_manchurian.jpg",
+        "name": "Beef Stroganoff",
+        "recipe": "Tender beef cooked in a creamy mushroom sauce served over noodles.",
+        "image": "/images/recipes/beef_stroganoff.jpg",
+        "category": "main course",
+        "price": 600
+    },
+    {
+        "name": "Cheesy Garlic Bread",
+        "recipe": "Bread topped with garlic and melted cheese.",
+        "image": "/images/recipes/cheesy_garlic_bread.jpg",
         "category": "starters",
-        "price": 250
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d53",
-        "name": "Chickpea Curry",
-        "recipe": "Spicy chickpeas cooked in a tomato-based gravy.",
-        "image": "/images/recipes/chickpea_curry.jpg",
-        "category": "main course",
-        "price": 300
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d54",
-        "name": "Spaghetti Aglio e Olio",
-        "recipe": "Pasta tossed in garlic and olive oil with chili flakes.",
-        "image": "/images/recipes/spaghetti_aglio_olio.jpg",
-        "category": "main course",
-        "price": 250
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d55",
-        "name": "Masala Dosa",
-        "recipe": "Crispy crepe made from rice and lentils, filled with spiced potatoes.",
-        "image": "/images/recipes/masala_dosa.jpg",
-        "category": "veg meals",
         "price": 180
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d56",
-        "name": "Beef Stroganoff",
-        "recipe": "Tender beef cooked in a creamy sauce served over noodles.",
-        "image": "/images/recipes/beef_stroganoff.jpg",
-        "category": "non veg meals",
-        "price": 500
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d57",
-        "name": "Cheesy Garlic Bread",
-        "recipe": "Bread topped with garlic butter and melted cheese.",
-        "image": "/images/recipes/cheesy_garlic_bread.jpg",
-        "category": "starters",
-        "price": 150
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d58",
-        "name": "Pumpkin Soup",
-        "recipe": "Creamy soup made with roasted pumpkin and spices.",
-        "image": "/images/recipes/pumpkin_soup.jpg",
-        "category": "soups",
-        "price": 220
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d59",
-        "name": "Tiramisu",
-        "recipe": "Classic Italian dessert made with coffee-soaked ladyfingers and mascarpone.",
-        "image": "/images/recipes/tiramisu.jpg",
-        "category": "desserts",
-        "price": 400
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d60",
-        "name": "Banana Split",
-        "recipe": "Split banana topped with scoops of ice cream and chocolate syrup.",
-        "image": "/images/recipes/banana_split.jpg",
-        "category": "desserts",
-        "price": 300
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d61",
-        "name": "Cabbage Salad",
-        "recipe": "Fresh cabbage salad with vinaigrette dressing.",
-        "image": "/images/recipes/cabbage_salad.jpg",
-        "category": "salads",
-        "price": 150
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d62",
         "name": "Stuffed Bell Peppers",
-        "recipe": "Bell peppers stuffed with rice and vegetables, baked until tender.",
+        "recipe": "Bell peppers filled with rice, beans, and cheese.",
         "image": "/images/recipes/stuffed_bell_peppers.jpg",
         "category": "main course",
         "price": 300
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d63",
-        "name": "Paneer Bhurji",
-        "recipe": "Scrambled paneer with onions and tomatoes, served with roti.",
-        "image": "/images/recipes/paneer_bhurji.jpg",
+        "name": "Eggplant Parmesan",
+        "recipe": "Layers of breaded eggplant with marinara sauce and cheese.",
+        "image": "/images/recipes/eggplant_parmesan.jpg",
         "category": "main course",
-        "price": 250
+        "price": 400
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d64",
-        "name": "Chocolate Chip Cookies",
-        "recipe": "Classic cookies with chocolate chips, soft and chewy.",
-        "image": "/images/recipes/chocolate_chip_cookies.jpg",
+        "name": "Chili Con Carne",
+        "recipe": "Spicy stew made with ground beef, beans, and tomatoes.",
+        "image": "/images/recipes/chili_con_carne.jpg",
+        "category": "main course",
+        "price": 320
+    },
+    {
+        "name": "Caprese Pasta",
+        "recipe": "Pasta tossed with fresh tomatoes, mozzarella, and basil.",
+        "image": "/images/recipes/caprese_pasta.jpg",
+        "category": "main course",
+        "price": 260
+    },
+    {
+        "name": "Vegetable Curry",
+        "recipe": "Mixed vegetables cooked in a rich and spicy curry sauce.",
+        "image": "/images/recipes/vegetable_curry.jpg",
+        "category": "main course",
+        "price": 350
+    },
+    {
+        "name": "Pineapple Fried Rice",
+        "recipe": "Fried rice with pineapple, shrimp, and cashews.",
+        "image": "/images/recipes/pineapple_fried_rice.jpg",
+        "category": "main course",
+        "price": 400
+    },
+    {
+        "name": "Coconut Chia Pudding",
+        "recipe": "Chia seeds soaked in coconut milk, topped with fruits.",
+        "image": "/images/recipes/coconut_chia_pudding.jpg",
         "category": "desserts",
-        "price": 180
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d65",
-        "name": "Egg Drop Soup",
-        "recipe": "Simple soup with beaten eggs and scallions.",
-        "image": "/images/recipes/egg_drop_soup.jpg",
-        "category": "soups",
-        "price": 120
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d66",
-        "name": "Mango Lassi",
-        "recipe": "A sweet, creamy blend of yogurt, mango pulp, and sugar.",
-        "image": "/images/recipes/mango_lassi.jpg",
-        "category": "beverages",
-        "price": 150
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d67",
-        "name": "Cold Coffee",
-        "recipe": "Chilled coffee blended with milk and ice, topped with whipped cream.",
-        "image": "/images/recipes/cold_coffee.jpg",
-        "category": "beverages",
-        "price": 120
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d68",
-        "name": "Fresh Lime Soda",
-        "recipe": "Refreshing soda mixed with fresh lime juice and a hint of sugar.",
-        "image": "/images/recipes/fresh_lime_soda.jpg",
-        "category": "beverages",
-        "price": 80
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d69",
-        "name": "Masala Chai",
-        "recipe": "Traditional spiced tea made with milk, black tea, and spices.",
-        "image": "/images/recipes/masala_chai.jpg",
-        "category": "beverages",
-        "price": 50
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d70",
-        "name": "Strawberry Milkshake",
-        "recipe": "Blended strawberries, milk, and ice cream, topped with whipped cream.",
-        "image": "/images/recipes/strawberry_milkshake.jpg",
-        "category": "beverages",
-        "price": 180
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d71",
-        "name": "Iced Tea",
-        "recipe": "Chilled tea infused with lemon and served over ice.",
-        "image": "/images/recipes/iced_tea.jpg",
-        "category": "beverages",
-        "price": 100
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d72",
-        "name": "Cappuccino",
-        "recipe": "Espresso topped with steamed milk and frothy foam.",
-        "image": "/images/recipes/cappuccino.jpg",
-        "category": "beverages",
-        "price": 150
-    },
-    {
-        "_id": "642c155b2c4774f05c36ee7d73",
-        "name": "Mojito",
-        "recipe": "Refreshing mint and lime drink served with soda and ice.",
-        "image": "/images/recipes/mojito.jpg",
-        "category": "beverages",
         "price": 200
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d74",
-        "name": "Orange Juice",
-        "recipe": "Freshly squeezed orange juice, served chilled.",
-        "image": "/images/recipes/orange_juice.jpg",
-        "category": "beverages",
-        "price": 90
+        "name": "Matcha Green Tea Cake",
+        "recipe": "Moist cake infused with matcha green tea flavor.",
+        "image": "/images/recipes/matcha_cake.jpg",
+        "category": "desserts",
+        "price": 350
     },
     {
-        "_id": "642c155b2c4774f05c36ee7d75",
-        "name": "Hot Chocolate",
-        "recipe": "Rich chocolate drink made with milk, topped with whipped cream.",
-        "image": "/images/recipes/hot_chocolate.jpg",
-        "category": "beverages",
-        "price": 180
+        "name": "Carrot Cake",
+        "recipe": "Spiced carrot cake topped with cream cheese frosting.",
+        "image": "/images/recipes/carrot_cake.jpg",
+        "category": "desserts",
+        "price": 300
+    },
+    {
+        "name": "Pistachio Baklava",
+        "recipe": "Layered pastry filled with nuts and honey syrup.",
+        "image": "/images/recipes/pistachio_baklava.jpg",
+        "category": "desserts",
+        "price": 250
+    },
+    {
+        "name": "Rice Pudding",
+        "recipe": "Creamy pudding made with rice, milk, and sugar.",
+        "image": "/images/recipes/rice_pudding.jpg",
+        "category": "desserts",
+        "price": 150
+    },
+    {
+        "name": "Key Lime Pie",
+        "recipe": "Tart and creamy pie made with key lime juice.",
+        "image": "/images/recipes/key_lime_pie.jpg",
+        "category": "desserts",
+        "price": 280
+    },
+    {
+        "name": "Mango Sorbet",
+        "recipe": "Refreshing mango sorbet made with real mangoes.",
+        "image": "/images/recipes/mango_sorbet.jpg",
+        "category": "desserts",
+        "price": 200
+    },
+    {
+        "name": "Banoffee Pie",
+        "recipe": "Delicious pie made with bananas, caramel, and whipped cream.",
+        "image": "/images/recipes/banoffee_pie.jpg",
+        "category": "desserts",
+        "price": 300
+    },
+    {
+        "name": "Tiramisu",
+        "recipe": "Classic Italian dessert made with coffee-soaked ladyfingers and mascarpone.",
+        "image": "/images/recipes/tiramisu.jpg",
+        "category": "desserts",
+        "price": 350
+    },
+    {
+        "name": "Oreo Cheesecake",
+        "recipe": "Creamy cheesecake made with crushed Oreos and a chocolate crust.",
+        "image": "/images/recipes/oreo_cheesecake.jpg",
+        "category": "desserts",
+        "price": 400
+    },
+    {
+        "name": "Baklava",
+        "recipe": "Sweet pastry filled with nuts and honey syrup.",
+        "image": "/images/recipes/baklava.jpg",
+        "category": "desserts",
+        "price": 300
+    },
+    {
+        "name": "Raspberry Crumble",
+        "recipe": "Baked raspberries topped with a buttery crumble.",
+        "image": "/images/recipes/raspberry_crumble.jpg",
+        "category": "desserts",
+        "price": 250
+    },
+    {
+        "name": "Fruit Smoothie",
+        "recipe": "Blended smoothie with seasonal fruits and yogurt.",
+        "image": "/images/recipes/fruit_smoothie.jpg",
+        "category": "drinks",
+        "price": 150
+    },
+    {
+        "name": "Lemonade",
+        "recipe": "Refreshing lemonade made with fresh lemons and mint.",
+        "image": "/images/recipes/lemonade.jpg",
+        "category": "drinks",
+        "price": 120
+    },
+    {
+        "name": "Iced Tea",
+        "recipe": "Chilled tea brewed with lemon and mint.",
+        "image": "/images/recipes/iced_tea.jpg",
+        "category": "drinks",
+        "price": 150
+    },
+    {
+        "name": "Coconut Water",
+        "recipe": "Fresh coconut water served chilled.",
+        "image": "/images/recipes/coconut_water.jpg",
+        "category": "drinks",
+        "price": 100
+    },
+    {
+        "name": "Chai Latte",
+        "recipe": "Spiced tea brewed with milk and served hot.",
+        "image": "/images/recipes/chai_latte.jpg",
+        "category": "drinks",
+        "price": 120
     }
 ]

@@ -95,13 +95,13 @@ const CartPage = () => {
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
-              refetch();
               Swal.fire({
                 title: "Deleted!",
                 text: "Item has been deleted.",
                 icon: "success",
               });
             }
+            refetch();
           });
       }
     });
@@ -162,10 +162,9 @@ const CartPage = () => {
                     </button>
                     <input
                       type="number"
-                      name=""
-                      id=""
                       value={item.quantity}
                       className="w-8 mx-2 text-center overflow-hidden appearance-none"
+                      onChange={()=>console.log(null)}
                     />
                     <button
                       className="btn btn-xs"

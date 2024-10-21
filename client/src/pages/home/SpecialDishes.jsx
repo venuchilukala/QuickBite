@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Cards from "../../components/Cards";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
-const simpleNextArrow = (props) => {
+const SimpleNextArrow = (props) => {
   const { className, style, onclick } = props;
   return (
     <div
@@ -18,7 +18,7 @@ const simpleNextArrow = (props) => {
   );
 };
 
-const simplePrevArrow = (props) => {
+const SimplePrevArrow = (props) => {
   const { className, style, onclick } = props;
   return (
     <div
@@ -79,8 +79,8 @@ const SpecialDishes = () => {
         },
       },
     ],
-    nextArrow: <simpleNextArrow />,
-    prevArrow: <simplePrevArrow />,
+    nextArrow: <SimpleNextArrow />,
+    prevArrow: <SimplePrevArrow />,
   };
 
   return (
@@ -115,9 +115,9 @@ const SpecialDishes = () => {
           className="overflow-hidden mt-5 space-x-5"
         >
           {recipes.map((item, i) => (
-            <div>
+            
               <Cards key={i} item={item} />
-            </div>
+          
           ))}
         </Slider>
       </div>

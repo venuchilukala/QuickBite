@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Profile = (props) => {
   const { user } = props;
@@ -8,7 +8,7 @@ const Profile = (props) => {
 
   const location  = useLocation()
   const navigate = useNavigate()
-  const from = location.state?.from?.pathname || "/signup"
+  const from = location.state?.from?.pathname || "/"
 
   const handleLogout = () =>{
     logOut().then(()=>{
@@ -59,6 +59,9 @@ const Profile = (props) => {
             </li>
             <li>
               <a>Settings</a>
+            </li>
+            <li>
+              <Link to="/dashboard">Dashboard</Link>
             </li>
             <li>
               <a onClick={handleLogout}>Logout</a>

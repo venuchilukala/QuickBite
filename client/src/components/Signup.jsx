@@ -4,18 +4,19 @@ import { Link, replace, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Modal from "./Modal";
 import { AuthContext } from "../contexts/AuthProvider";
-import axios from "axios";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Signup = () => {
+  const [errorMessage, setErrorMessage] = useState("");
+  const { createUser, signUpWithGmail, UpdateUserProfile } =
+    useContext(AuthContext);
+  const axiosPublic = useAxiosPublic();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const [errorMessage, setErrorMessage] = useState("");
-  const { createUser, signUpWithGmail, UpdateUserProfile } =
-    useContext(AuthContext);
 
   //Redirection to home page or specifing page
   const location = useLocation();
@@ -35,14 +36,12 @@ const Signup = () => {
             name: data.name,
             email: data.email,
           };
-          axios
-            .post("http://localhost:6001/users", userInfo)
-            .then((response) => {
-              alert("Signin successful!");
-              document.getElementById("my_modal_5").close();
+          axiosPublic.post("/users", userInfo).then((response) => {
+            alert("Signin successful!");
+            document.getElementById("my_modal_5").close();
 
-              navigate(from, { replace: true });
-            });
+            navigate(from, { replace: true });
+          });
         });
       })
       .catch((error) => {
@@ -61,13 +60,11 @@ const Signup = () => {
           name: result?.user?.displayName,
           email: result?.user?.email,
         };
-        axios
-          .post("http://localhost:6001/users", userInfo)
-          .then((response) => {
-            alert("Login successful!");
-            document.getElementById("my_modal_5").close();
-            navigate("/");
-          });
+        axiosPublic.post("/users", userInfo).then((response) => {
+          alert("Login successful!");
+          document.getElementById("my_modal_5").close();
+          navigate("/");
+        });
       })
       .catch((error) => {
         console.log(error);

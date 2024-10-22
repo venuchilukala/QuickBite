@@ -1,14 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, {useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaFacebookF, FaGoogle, FaInstagram } from "react-icons/fa";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "../contexts/AuthProvider";
-import axios from "axios";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import useAuth from "../hooks/useAuth";
 
 const Login = () => {
   const [errorMessage, seterrorMessage] = useState("");
-  const { signUpWithGmail, login } = useContext(AuthContext);
-  //   const axiosPublic = useAxiosPublic();
+  const { signUpWithGmail, login } = useAuth();
+  const axiosPublic = useAxiosPublic();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -23,7 +23,6 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-
   const onSubmit = (data) => {
     const email = data.email;
     const password = data.password;
@@ -34,7 +33,7 @@ const Login = () => {
           name: data.email,
           email: data.email,
         };
-        axios.post("http://localhost:6001/users", userInfo).then((response) => {
+        axiosPublic.post("/users", userInfo).then((response) => {
           alert("Login successful!");
           document.getElementById("my_modal_5").close();
 
@@ -57,7 +56,7 @@ const Login = () => {
           name: result?.user?.displayName,
           email: result?.user?.email,
         };
-        axios.post("http://localhost:6001/users", userInfo).then((response) => {
+        axiosPublic.post("/users", userInfo).then((response) => {
           alert("Login successful!");
           document.getElementById("my_modal_5").close();
           navigate("/");

@@ -1,17 +1,36 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import {FaTrashAlt} from 'react-icons/fa'
-import {FaUsers} from 'react-icons/fa'
+import { FaTrashAlt } from "react-icons/fa";
+import { FaUsers } from "react-icons/fa";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Users = () => {
+  const axiosSecure = useAxiosSecure();
   const { refetch, data: users = [] } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const result = await fetch(`http://localhost:6001/users`);
-      return result.json();
+      const res = await axiosSecure.get("/users");
+      return res.data;
     },
   });
-  console.log(users);
+  // console.log(users);
+
+  //Handle Admin role
+  const handleMakeAdmin = (user) => {
+    axiosSecure.patch(`/users/admin/${user._id}`).then((res) => {
+      alert(`${user.name} is now an admin`);
+      refetch();
+    });
+  };
+
+  //Delete an user from database
+  const handleDeleteUser = (user) =>{
+    axiosSecure.delete(`/users/${user._id}`).then((res)=>{
+      alert(`${user.name} is removed from database`)
+      refetch()
+    })
+  }
+
   return (
     <div>
       <div className="flex items-center justify-between m-4">
@@ -40,11 +59,22 @@ const Users = () => {
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>
-                    {
-                      user.role === "admin" ? "Admin" : (<button className="btn btn-xs btn-circle bg-indigo-500 text-white"><FaUsers/></button>)
-                    }
+                    {user.role === "admin" ? (
+                      "Admin"
+                    ) : (
+                      <button
+                        onClick={() => handleMakeAdmin(user)}
+                        className="btn btn-xs btn-circle bg-indigo-500 text-white"
+                      >
+                        <FaUsers />
+                      </button>
+                    )}
                   </td>
-                  <td><button className="btn btn-xs bg-red text-white"><FaTrashAlt/></button></td>
+                  <td>
+                    <button onClick={()=>handleDeleteUser(user)} className="btn btn-xs bg-red text-white">
+                      <FaTrashAlt />
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>

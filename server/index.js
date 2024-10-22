@@ -3,7 +3,7 @@ const cors = require('cors')
 const { default: mongoose } = require('mongoose')
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
-const verifyToken = require('./api/middleware/veriftToken')
+const verifyToken = require('./api/middleware/verifyToken')
 
 const app = express()
 //middleware

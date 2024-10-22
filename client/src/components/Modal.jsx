@@ -36,12 +36,20 @@ const Modal = () => {
       });
   };
 
-  //
+  //login with google
   const handleLogin = () => {
     signUpWithGmail()
       .then((result) => {
         const user = result.user;
-        alert("Login Successful");
+        const userInfo = {
+          name: result?.user?.displayName,
+          email: result?.user?.email,
+        };
+        axios.post("http://localhost:6001/users", userInfo).then((response) => {
+          alert("Login successful!");
+          document.getElementById("my_modal_5").close();
+          navigate("/");
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -110,7 +118,6 @@ const Modal = () => {
               Don't have an account?
               <Link
                 to="/signup"
-                
                 onClick={() => document.getElementById("my_modal_5").close()}
                 className="underline text-center text-red ml-2"
               >

@@ -18,7 +18,7 @@ const addToCart = async (req, res) => {
     console.log("Menu id", menuItemId)
     try {
         //Check if item exists in cart 
-        const existingCartItem = await Carts.findOne({ menuItemId })
+        const existingCartItem = await Carts.findOne({ menuItemId, email })
         if (existingCartItem) {
             return res.status(400).json({ message: "Product already exists in the cart!" })
         }

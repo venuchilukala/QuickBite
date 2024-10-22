@@ -4,6 +4,7 @@ import { Link, replace, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Modal from "./Modal";
 import { AuthContext } from "../contexts/AuthProvider";
+import axios from "axios";
 
 const Signup = () => {
   const {
@@ -13,7 +14,8 @@ const Signup = () => {
   } = useForm();
 
   const [errorMessage, setErrorMessage] = useState("");
-  const { createUser, signUpWithGmail } = useContext(AuthContext);
+  const { createUser, signUpWithGmail, UpdateUserProfile } =
+    useContext(AuthContext);
 
   //Redirection to home page or specifing page
   const location = useLocation();
@@ -21,27 +23,51 @@ const Signup = () => {
   const from = location.state?.from?.pathname || "/";
 
   const onSubmit = (data) => {
+    const name = data.name;
     const email = data.email;
     const password = data.password;
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        alert("Account Creation Successfully done!!!");
-        document.getElementById("my_modal_5").close();
-        navigate(from, { replace: true });
+
+        UpdateUserProfile(data.name, data.photoURL).then(() => {
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+          };
+          axios
+            .post("http://localhost:6001/users", userInfo)
+            .then((response) => {
+              alert("Signin successful!");
+              document.getElementById("my_modal_5").close();
+
+              navigate(from, { replace: true });
+            });
+        });
       })
       .catch((error) => {
+        const errorcode = error.code;
         const errorMessage = error.message;
         setErrorMessage(errorMessage);
       });
   };
 
+  //login with google
   const handleLogin = () => {
     signUpWithGmail()
       .then((result) => {
         const user = result.user;
-        alert("Login Successful");
-        navigate(from, { replace: true });
+        const userInfo = {
+          name: result?.user?.displayName,
+          email: result?.user?.email,
+        };
+        axios
+          .post("http://localhost:6001/users", userInfo)
+          .then((response) => {
+            alert("Login successful!");
+            document.getElementById("my_modal_5").close();
+            navigate("/");
+          });
       })
       .catch((error) => {
         console.log(error);
@@ -57,6 +83,19 @@ const Signup = () => {
           method="dialog"
         >
           <h3 className="font-bold text-lg">Create Account!</h3>
+
+          {/* name */}
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Name</span>
+            </label>
+            <input
+              type="name"
+              placeholder="Your name"
+              className="input input-bordered"
+              {...register("name")}
+            />
+          </div>
 
           {/* Email */}
           <div className="form-control">

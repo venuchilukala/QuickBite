@@ -99,7 +99,7 @@ const Cards = (props) => {
         <p>{recipe}</p>
         <div className="card-actions justify-between items-center mt-2">
           <h5 className="font-semibold flex gap-2">
-            <span className="text-sm text-red">$</span>
+            <span className="text-sm text-red">₹</span>
             {price}
           </h5>
           <button

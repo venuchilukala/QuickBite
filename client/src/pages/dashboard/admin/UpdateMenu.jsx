@@ -1,14 +1,18 @@
 import React from "react";
-import { FaUtensils } from "react-icons/fa";
-import { useForm } from "react-hook-form";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import Swal from 'sweetalert2'
+import { useForm } from "react-hook-form";
+import { FaUtensils } from "react-icons/fa";
 
-const AddMenu = () => {
+const UpdateMenu = () => {
+  const item = useLoaderData();
   const { register, handleSubmit, reset } = useForm();
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
+
+  const navigate = useNavigate();
 
   //image hosting
   const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -34,16 +38,17 @@ const AddMenu = () => {
         image: hostingImg.data.data.display_url,
       };
       // console.log(menuItem)
-      const postMenuItem = axiosSecure.post('/menu', menuItem)
-      console.log(postMenuItem)
-      if(postMenuItem){
-        reset()
+      const updateMenuItem = axiosSecure.patch(`/menu/${item._id}`, menuItem);
+      // console.log(postMenuItem)
+      if (updateMenuItem) {
+        reset();
         Swal.fire({
-          icon: 'success',
-          title: 'Item added to menu successfully!',
+          icon: "success",
+          title: "Item updated successfully!",
           showConfirmButton: false,
-          timer: 1500
-        })
+          timer: 1500,
+        });
+        navigate("/dashboard/manage-items");
       }
     }
   };
@@ -51,7 +56,7 @@ const AddMenu = () => {
   return (
     <div className="w-full md:w-[870px] px-4 mx-auto">
       <h2 className="text-2xl font-semibold my-4">
-        Upload a New <span className="text-green ">Menu Item</span>
+        Update This <span className="text-green ">Menu Item</span>
       </h2>
 
       {/* Form  */}
@@ -64,6 +69,7 @@ const AddMenu = () => {
             </label>
             <input
               type="text"
+              defaultValue={item.name}
               {...register("name", { required: true })}
               placeholder="Recipe name"
               className="input input-bordered w-full "
@@ -78,6 +84,7 @@ const AddMenu = () => {
                 <span className="label-text">Category*</span>
               </label>
               <select
+                defaultValue={item.category}
                 {...register("category", { required: true })}
                 className="select select-bordered"
               >
@@ -104,6 +111,7 @@ const AddMenu = () => {
               </label>
               <input
                 type="number"
+                defaultValue={item.price}
                 {...register("price", { required: true })}
                 placeholder="Price"
                 className="input input-bordered w-full "
@@ -117,6 +125,7 @@ const AddMenu = () => {
               <span className="label-text">Recipe Details*</span>
             </label>
             <textarea
+              defaultValue={item.recipe}
               className="textarea textarea-bordered h-24"
               placeholder="Describe your recipe"
               {...register("recipe", { required: true })}
@@ -129,12 +138,11 @@ const AddMenu = () => {
               {...register("image", { required: true })}
               type="file"
               className="file-input w-full max-w-xs"
-              required
             />
           </div>
           <button className="btn bg-green text-white px-6">
             {" "}
-            Add Item
+            Update Item
             <FaUtensils />
           </button>
         </form>
@@ -143,4 +151,4 @@ const AddMenu = () => {
   );
 };
 
-export default AddMenu;
+export default UpdateMenu;

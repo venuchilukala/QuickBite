@@ -27,4 +27,22 @@ router.post('/', verifyToken ,async(req, res) => {
     }
 })
 
+//get payment transactions 
+router.get('/', verifyToken, async(req, res) => {
+    const email = req.query.email 
+    const query = {email : email}
+
+    try {
+        const decodedEmail = req.decoded.email 
+        if(email !== decodedEmail){
+            return res.status(403).json({message : "Forbidden Access"})
+        }
+        const result = await Payment.find(query).sort({createdAt : -1}).exec();
+        res.status(200).json(result)
+        
+    } catch (error) {
+       res.status(500).json({message : error.message}) 
+    }
+})
+
 module.exports = router

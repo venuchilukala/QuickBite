@@ -125,9 +125,9 @@ const CartPage = () => {
         </div>
       </div>
 
+      {/* cart item table */}
       {cart.length > 0 ? (
         <>
-          {/* cart item table */}
           <div className="overflow-x-auto">
             <table className="table">
               {/* head */}

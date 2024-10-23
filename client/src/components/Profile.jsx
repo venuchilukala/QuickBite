@@ -55,7 +55,7 @@ const Profile = (props) => {
               <a href="/update-profile">Profile</a>
             </li>
             <li>
-              <a>Orders</a>
+              <Link to="/orders">Orders</Link>
             </li>
             <li>
               <a>Settings</a>

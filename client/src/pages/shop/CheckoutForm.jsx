@@ -95,7 +95,7 @@ const CheckoutForm = ({ price, cart }) => {
         axiosSecure.post('/payments', paymentInfo).then(res =>{
           console.log(res.data)
           alert("Payment is successful!")
-          navigate('/order')
+          navigate('/orders')
         })
       }
   };

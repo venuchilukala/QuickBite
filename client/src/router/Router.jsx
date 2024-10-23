@@ -13,6 +13,7 @@ import AddMenu from '../pages/dashboard/admin/AddMenu';
 import ManageItems from '../pages/dashboard/admin/ManageItems';
 import UpdateMenu from '../pages/dashboard/admin/UpdateMenu';
 import Payment from '../pages/shop/Payment';
+import Orders from '../pages/dashboard/Orders';
 
 const router = createBrowserRouter([
   //User Routes
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
         {
           path : '/update-profile',
           element : <UpdateProfile/>
+        },
+        {
+          path: '/orders',
+          element: <Orders/>
         },
         {
           path: "/process-checkout",

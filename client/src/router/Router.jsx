@@ -12,8 +12,10 @@ import Login from '../components/Login';
 import AddMenu from '../pages/dashboard/admin/AddMenu';
 import ManageItems from '../pages/dashboard/admin/ManageItems';
 import UpdateMenu from '../pages/dashboard/admin/UpdateMenu';
+import Payment from '../pages/shop/Payment';
 
 const router = createBrowserRouter([
+  //User Routes
     {
       path: "/",
       element: <Main/>,
@@ -33,6 +35,10 @@ const router = createBrowserRouter([
         {
           path : '/update-profile',
           element : <UpdateProfile/>
+        },
+        {
+          path: "/process-checkout",
+          element: <Payment/>
         }
       ]
     },
@@ -44,6 +50,8 @@ const router = createBrowserRouter([
       path : "/login",
       element: <Login/>
     },
+
+    //Admin Routes
     {
       path : "/dashboard",
       element: <DashboardLayout/>,

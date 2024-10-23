@@ -3,6 +3,7 @@ import useCart from "../../hooks/useCart";
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../contexts/AuthProvider";
+import { Link } from "react-router-dom";
 
 const CartPage = () => {
   const [cart, refetch] = useCart();
@@ -14,7 +15,7 @@ const CartPage = () => {
     return item.price * item.quantity;
   };
 
-//Handle Increase button
+  //Handle Increase button
   const handleIncrease = (item) => {
     fetch(`http://localhost:6001/carts/${item._id}`, {
       method: "PUT",
@@ -73,9 +74,8 @@ const CartPage = () => {
         });
       // Refetch the updated cart data
       refetch();
-    }
-    else{
-      alert("Item can't be less than zero")
+    } else {
+      alert("Item can't be less than zero");
     }
   };
 
@@ -108,8 +108,8 @@ const CartPage = () => {
   };
 
   const orderSubTotal = cart.reduce((total, item) => {
-    return total + calculatePrice(item)
-  },0)
+    return total + calculatePrice(item);
+  }, 0);
 
   return (
     <div className="section-container">
@@ -125,86 +125,103 @@ const CartPage = () => {
         </div>
       </div>
 
-      {/* cart item table */}
-      <div className="overflow-x-auto">
-        <table className="table">
-          {/* head */}
-          <thead>
-            <tr className="bg-green text-white font-md">
-              <th>#</th>
-              <th>Food</th>
-              <th>Item Name</th>
-              <th>Quantity</th>
-              <th>Price</th>
-              <th>Remove</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* row items */}
-            {cart.map((item, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>
-                  <div className="avatar">
-                    <div className="mask mask-squircle h-12 w-12">
-                      <img src={item.image} alt={item.name} />
-                    </div>
-                  </div>
-                </td>
-                <th>{item.name}</th>
-                <td>
-                  <div>
-                    <button
-                      className="btn btn-xs"
-                      onClick={() => handleDecrease(item)}
-                    >
-                      -
-                    </button>
-                    <input
-                      type="number"
-                      value={item.quantity}
-                      className="w-8 mx-2 text-center overflow-hidden appearance-none"
-                      onChange={()=>console.log(null)}
-                    />
-                    <button
-                      className="btn btn-xs"
-                      onClick={() => handleIncrease(item)}
-                    >
-                      +
-                    </button>
-                  </div>
-                </td>
-                <td>&#8377;{calculatePrice(item)}</td>
-                <td>
-                  <button
-                    className="btn btn-ghost text-rose-600 btn-xs"
-                    onClick={() => handleDelete(item)}
-                  >
-                    <FaTrash />
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {cart.length > 0 ? (
+        <>
+          {/* cart item table */}
+          <div className="overflow-x-auto">
+            <table className="table">
+              {/* head */}
+              <thead>
+                <tr className="bg-green text-white font-md">
+                  <th>#</th>
+                  <th>Food</th>
+                  <th>Item Name</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th>Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* row items */}
+                {cart.map((item, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>
+                      <div className="avatar">
+                        <div className="mask mask-squircle h-12 w-12">
+                          <img src={item.image} alt={item.name} />
+                        </div>
+                      </div>
+                    </td>
+                    <th>{item.name}</th>
+                    <td>
+                      <div>
+                        <button
+                          className="btn btn-xs"
+                          onClick={() => handleDecrease(item)}
+                        >
+                          -
+                        </button>
+                        <input
+                          type="number"
+                          value={item.quantity}
+                          className="w-8 mx-2 text-center overflow-hidden appearance-none"
+                          onChange={() => console.log(null)}
+                        />
+                        <button
+                          className="btn btn-xs"
+                          onClick={() => handleIncrease(item)}
+                        >
+                          +
+                        </button>
+                      </div>
+                    </td>
+                    <td>&#8377;{calculatePrice(item)}</td>
+                    <td>
+                      <button
+                        className="btn btn-ghost text-rose-600 btn-xs"
+                        onClick={() => handleDelete(item)}
+                      >
+                        <FaTrash />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
-      {/* Customer details and Shop details */}
-      <div className="my-12 flex flex-col md:flex-row justify-between md:items-center gap-4">
-        <div className="md:w-1/2 space-y-3">
-          <h3 className="font-semibold">Customer Details</h3>
-          <p>Name : {user.displayName}</p>
-          <p>Email : {user.email}</p>
-          <p> user_id : {user.uid}</p>
+          {/* Customer details and Shop details */}
+          <div className="my-12 flex flex-col md:flex-row justify-between md:items-center gap-4">
+            <div className="md:w-1/2 space-y-3">
+              <h3 className="font-semibold">Customer Details</h3>
+              <p>Name : {user.displayName}</p>
+              <p>Email : {user.email}</p>
+              <p> user_id : {user.uid}</p>
+            </div>
+            {/* Cart Details */}
+            <div className="md:w-1/2 space-y-3">
+              <h3 className="font-semibold">Cart Details</h3>
+              <p>Total Items : {cart.length}</p>
+              <p>Total Price : &#8377;{orderSubTotal.toFixed(2)}</p>
+              <Link to="/process-checkout">
+                <button className="btn bg-green text-white">
+                  Proceed Checkout
+                </button>
+              </Link>
+            </div>
+          </div>
+        </>
+      ) : (
+        <div className="text-center mt-20">
+          <p>Cart is empty. Please add products.</p>
+          <Link to="/menu">
+            <button className="btn bg-green text-white mt-3">
+              Back to Menu
+            </button>
+          </Link>
         </div>
-        {/* Cart Details */}
-        <div className="md:w-1/2 space-y-3">
-          <h3 className="font-semibold">Cart Details</h3>
-          <p>Total Items : {cart.length}</p>
-          <p>Total Price : &#8377;{orderSubTotal.toFixed(2)}</p>
-          <button className="btn bg-green text-white">Proceed Checkout</button>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

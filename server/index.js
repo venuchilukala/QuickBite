@@ -28,11 +28,15 @@ const menuRoutes = require('./api/routes/menuRoutes')
 const cartRoutes = require('./api/routes/cartRoutes')
 const userRoutes = require('./api/routes/userRoutes')
 const paymentRoutes = require('./api/routes/paymentRoutes')
+const adminStats = require('./api/routes/adminStats')
+const getBookings = require('./api/routes/getBookings')
 
 app.use('/menu', menuRoutes)
 app.use('/carts', cartRoutes)
 app.use('/users', userRoutes)
 app.use('/payments', paymentRoutes)
+app.use('/admin-stats', adminStats)
+app.use('/bookings', getBookings)
 
 /***************************************************************************************************************/
 
@@ -45,7 +49,7 @@ app.post("/create-payment-intent", async (req, res) => {
     return res.status(400).send({ error: "Invalid price amount" });
   }
 
-  const amount = price * 100
+  const amount = parseInt(price * 100)
 
   // Create a PaymentIntent with the order amount and currency
   const paymentIntent = await stripe.paymentIntents.create({

@@ -2,31 +2,18 @@ import React from "react";
 import useAuth from "../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import usePayment from "../../hooks/usePayment";
 
 const Orders = () => {
-  const { user } = useAuth();
-  const token = localStorage.getItem("access-token");
-
-  const { refetch, data: orders = [] } = useQuery({
-    queryKey: ["orders", user?.email],
-    queryFn: async () => {
-      const res = await fetch(
-        `http://localhost:6001/payments?email=${user?.email}`,
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      return res.json();
-    },
-  });
-
-  //   console.log(orders);
+  const [orders, refetch] = usePayment();
 
   const formatDate = (createdAt) => {
     const createdAtDate = new Date(createdAt);
-    return [createdAtDate.toLocaleDateString(),"  " , createdAtDate.toLocaleTimeString()];
+    return [
+      createdAtDate.toLocaleDateString(),
+      "  ",
+      createdAtDate.toLocaleTimeString(),
+    ];
   };
 
   return (
@@ -55,7 +42,7 @@ const Orders = () => {
                   <th>Order Date</th>
                   <th>Transaction Id</th>
                   <th>Price</th>
-                  <th>Status</th>
+                  <th><div className="text-center">Status</div></th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -67,7 +54,19 @@ const Orders = () => {
                     <td>{formatDate(order.createdAt)}</td>
                     <td>{order.transactionId}</td>
                     <td>&#8377; {order.price}</td>
-                    <td>{order.status}</td>
+                    <td>
+                      <div className="text-center">
+                        {order.status === "Order pending" ? (
+                          <div className="badge badge-error gap-2 text-white">
+                            Pending
+                          </div>
+                        ) : (
+                          <div className="badge badge-success gap-2 text-white">
+                            Confirmed
+                          </div>
+                        )}
+                      </div>
+                    </td>
                     <td>
                       <Link
                         to="/contact"

@@ -115,7 +115,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           {/* search  */}
-          <button className="btn btn-ghost btn-circle hidden lg:flex">
+          <button className="btn btn-ghost btn-circle lg:flex">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -136,7 +136,7 @@ const Navbar = () => {
             <div
               tabIndex="0"
               role="button"
-              className="btn btn-ghost btn-circle mr-3 hidden lg:flex items-center justify-center"
+              className="btn btn-ghost btn-circle mr-3  lg:flex items-center justify-center"
             >
               <div className="indicator">
                 <svg

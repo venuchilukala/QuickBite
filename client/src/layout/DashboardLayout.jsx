@@ -25,32 +25,31 @@ const sharedLinks = (
         <FaHome /> Home
       </Link>
     </li>
-    <li className="mt-3">
+    <li>
       <Link to="/menu">
         <FaShoppingCart /> Menu
       </Link>
     </li>
-    <li className="mt-3">
-      <Link to="/menu">
+    <li>
+      <Link to="/orders">
         <FaLocationArrow /> Order Tracking
       </Link>
     </li>
-    <li className="mt-3">
-      <Link to="/menu">
+    <li>
+      <Link to="/contact">
         <FaQuestionCircle /> Customer Support
       </Link>
     </li>
-
   </>
 );
 
 const DashboardLayout = () => {
-  const {loading} = useAuth()
-  const [isAdmin, isAdminLoading] = useAdmin()
+  const { loading } = useAuth();
+  const [isAdmin, isAdminLoading] = useAdmin();
   return (
     <div>
-      {
-        isAdmin ? (<div className="drawer sm:drawer-open">
+      {isAdmin ? (
+        <div className="drawer sm:drawer-open">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content flex flex-col sm:items-start sm:justify-start">
             {/* Page content here */}
@@ -85,12 +84,12 @@ const DashboardLayout = () => {
               </li>
               <hr />
               <li className="mt-3">
-                <Link to="/dashboard">
+                <Link to="admin-stats">
                   <MdDashboard /> Dashboard
                 </Link>
               </li>
               <li>
-                <Link to="/dashboard">
+                <Link to="bookings">
                   <FaShoppingBag /> Manage Bookings
                 </Link>
               </li>
@@ -111,13 +110,13 @@ const DashboardLayout = () => {
               </li>
               <hr />
               {/* Shared nav Links */}
-              {
-                  sharedLinks
-              }
+              {sharedLinks}
             </ul>
           </div>
-        </div>) : (<Login/>)
-      }
+        </div>
+      ) : (
+        <Login />
+      )}
     </div>
   );
 };

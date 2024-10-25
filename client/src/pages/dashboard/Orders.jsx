@@ -17,7 +17,7 @@ const Orders = () => {
   };
 
   return (
-    <div className="section-container">
+    <div className="section-container ">
       {/* Banner Section */}
       <div className="bg-gradient-to-r from-[#FAFAFA] from-0% to-[#FCFCFC] to-100%">
         <div className="md:py-28 flex flex-col justify-between items-center gap-8">

@@ -74,7 +74,7 @@ const Cards = (props) => {
   };
 
   return (
-    <div className="card bg-base-100 shadow-xl ">
+    <div className="card shadow-xl relative mr-5 md:my-5"  >
       <div
         className={`rating gap-1 absolute p-4 right-2 top-2 heartStar bg-green z-10 ${
           isHeartFilled ? "text-rose-500" : "text-white"
@@ -83,7 +83,7 @@ const Cards = (props) => {
       >
         <FaHeart className="h-5 w-5 cursor-pointer" />
       </div>
-      <Link to={`/menu/${_id}`}>
+      <div >
         <figure>
           <img
             src={image}
@@ -91,11 +91,11 @@ const Cards = (props) => {
             className="hover:scale-105 transition-all duration-200 md:h-72"
           />
         </figure>
-      </Link>
+      </div>
       <div className="card-body">
-        <Link to={`/menu/${_id}`}>
+        <div >
           <h2 className="card-title">{name}</h2>
-        </Link>
+        </div>
         <p>{recipe}</p>
         <div className="card-actions justify-between items-center mt-2">
           <h5 className="font-semibold flex gap-2">

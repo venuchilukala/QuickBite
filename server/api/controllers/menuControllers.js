@@ -16,7 +16,7 @@ const postMenuItem = async (req, res) => {
 
     try {
         const result = await Menu.create(newItem)
-        res.status(200).json(newItem)
+        res.status(201).json(result)
     } catch (error) {
         res.status(500).json({ message: error.message })
     }

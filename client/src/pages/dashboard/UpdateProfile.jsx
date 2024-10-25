@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const UpdateProfile = () => {
   const {
@@ -13,26 +14,39 @@ const UpdateProfile = () => {
   //Redirection to home page or specifing page
   const location = useLocation();
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
   const from = location.state?.from?.pathname || "/";
 
   const { UpdateUserProfile } = useContext(AuthContext);
 
-  const onSubmit = (data) => {
+  //image hosting
+  const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+  // console.log(image_hosting_key)
+  const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
+  const onSubmit = async (data) => {
+    // console.log(data);
+    const imageFile = { image: data.photoURL[0] };
+    const hostingImg = await axiosPublic.post(image_hosting_api, imageFile, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+    // console.log(hostingImg.data);
+
     const name = data.name;
-    const photoURL = data.photoURL;
-  
-    UpdateUserProfile({name, photoURL})
-      .then(() => {
-        // Profile updated!
-        // ...
-        alert("updated");
-        navigate(from, {replace : true})
-      })
-      .catch((error) => {
-        // An error occurred
-        // ...
-        console.log(error);
-      });
+    const photoURL = hostingImg.data.data.display_url;
+
+    if (hostingImg.data.success) {
+      UpdateUserProfile({ name, photoURL })
+        .then(() => {
+          alert("Profile updated successfully");
+          navigate(from, { replace: true });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   return (
@@ -56,16 +70,15 @@ const UpdateProfile = () => {
             <label className="label">
               <span className="label-text">Upload Photo</span>
             </label>
+            
+            {/* TODO : During backend */}
             <input
-              type="text"
-              placeholder="photo url"
-              className="input input-bordered"
+              type="file"
               required
               {...register("photoURL")}
+              className="file-input file-input-bordered w-full max-w-xs"
             />
-
-            {/* TODO : During backend */}
-            {/* <input type="file" className="file-input file-input-bordered w-full max-w-xs" />  */}
+            {errors.photoURL && <p className="text-red-500">{errors.photoURL.message}</p>}
           </div>
           <div className="form-control mt-6">
             <button className="btn bg-green text-white">Update</button>

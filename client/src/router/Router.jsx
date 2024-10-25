@@ -17,6 +17,7 @@ import Orders from "../pages/dashboard/Orders";
 import PrivateRouter from "../PrivateRouter/PrivateRouter";
 import ManageBookings from "../pages/dashboard/admin/ManageBookings";
 import Contact from "../pages/dashboard/Contact";
+import YourQueries from "../pages/dashboard/YourQueries";
 
 const router = createBrowserRouter([
   //User Routes
@@ -54,10 +55,16 @@ const router = createBrowserRouter([
       },
       {
         path: "/contact",
-        element: <Contact/>
+        element: <Contact />,
+      },
+
+      {
+        path: "/queries",
+        element: <YourQueries />,
       },
     ],
   },
+
   {
     path: "/signup",
     element: <Signup />,
@@ -66,7 +73,7 @@ const router = createBrowserRouter([
     path: "/login",
     element: <Login />,
   },
-  
+
   //Admin Routes
   {
     path: "/dashboard",

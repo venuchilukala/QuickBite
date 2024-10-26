@@ -11,7 +11,6 @@ const AllTickets = () => {
     queryKey: ["tickets"],
     queryFn: async () => {
       const res = await axiosSecure.get("/all-tickets");
-      // console.log(res.data);
       return res.data;
     },
   });
@@ -41,7 +40,10 @@ const AllTickets = () => {
   }
 
   return (
-    <div className="section-container pt-20 md:pt-24">
+    <div className="section-container pt-5 md:pt-5">
+      <h2 className="text-2xl font-semibold my-4">
+        Manage all <span className="text-green ">Tickets</span>
+      </h2>
       {tickets.map((ticket, index) => (
         <div
           key={index}

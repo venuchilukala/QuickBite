@@ -21,7 +21,6 @@ router.get('/', verifyToken, verifyAdmin, async (req, res) => {
 //make order confirmation
 router.patch('/:id', async (req, res) => {
     const paymentId = req.params.id
-    console.log(paymentId)
     const { email, transactionId, price, quantity, status, itemName, cartItems, menuItems } = req.body
     try {
         const updatedBooking = await Payment.findByIdAndUpdate(

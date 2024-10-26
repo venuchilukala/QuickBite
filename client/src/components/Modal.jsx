@@ -22,7 +22,6 @@ const Modal = () => {
   const onSubmit = (data) => {
     const email = data.email;
     const password = data.password;
-    console.log(email, password);
     login(email, password)
       .then((result) => {
         const user = result.user;

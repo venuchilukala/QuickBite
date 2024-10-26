@@ -13,7 +13,6 @@ const Users = () => {
       return res.data;
     },
   });
-  // console.log(users);
 
   //Handle Admin role
   const handleAdminStatus = (user) => {
@@ -34,8 +33,10 @@ const Users = () => {
   return (
     <div>
       <div className="flex items-center justify-between m-4">
-        <h5>All Users</h5>
-        <h5>Total users: {users.length}</h5>
+      <h2 className="text-2xl font-semibold my-4">
+        Manage all <span className="text-green ">Users</span>
+      </h2>
+        <h5 className="text-2xl font-semibold my-4">Total users: <span className="text-green ">{users.length}</span></h5>
       </div>
       {/* table */}
       <div>

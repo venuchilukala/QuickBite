@@ -8,8 +8,9 @@ const Menu = () => {
   const [filteredItems, setFilteredItems] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [sortOption, setSortOption] = useState("default");
-  const [currentPage, setCurrentPage] = useState(1)
-  const [itemsPerPage] = useState(8)
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(8);
+  const [searchQuery, setSearchQuery] = useState("");
 
   // Loading data
   useEffect(() => {
@@ -18,7 +19,6 @@ const Menu = () => {
       try {
         const response = await fetch("http://localhost:6001/menu");
         const data = await response.json();
-        console.log("Data", data)
         setMenu(data);
         setFilteredItems(data);
       } catch (error) {
@@ -30,26 +30,37 @@ const Menu = () => {
     fetchedData();
   }, []);
 
+  // Filtering Items based on category and search query
+  useEffect(() => {
+    const filteredByCategory =
+      selectedCategory === "all"
+        ? menu
+        : menu.filter((item) => item.category === selectedCategory);
+
+    const filteredBySearch = filteredByCategory.filter((item) =>
+      item.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    setFilteredItems(filteredBySearch);
+    setCurrentPage(1); // Reset to the first page
+  }, [selectedCategory, searchQuery, menu]);
+
+  //Handle search
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
   // Filtering Items based on category
   const filterItems = (category) => {
-    const filtered =
-      category === "all"
-        ? menu
-        : menu.filter((item) => item.category === category);
-
-    console.log("Filtered",filtered);
-
-    setFilteredItems(filtered);
     setSelectedCategory(category);
-    setCurrentPage(1)
+    setCurrentPage(1);
   };
 
   //   Show all items
   const showAll = () => {
-    console.log(menu);
     setFilteredItems(menu);
     setSelectedCategory("all");
-    setCurrentPage(1)
+    setCurrentPage(1);
   };
 
   //   sorting bases on dropdown value
@@ -76,20 +87,43 @@ const Menu = () => {
         break;
     }
     setFilteredItems(sortedItems);
-    setCurrentPage(1)
+    setCurrentPage(1);
   };
 
-  //Pagination Logic 
+  //Pagination Logic
   const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage ;
-  const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem) 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber)
-  
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div className="flex flex-col">
       {/* Menu Banner */}
       <div className="section-container bg-gradient-to-r from-[#FAFAFA] from-0% to-[#FCFCFC] to-100%">
-        <div className="py-20 md:py-40 flex flex-col  justify-center items-center gap-8">
+        <div className=" md:py-20 flex flex-col  justify-center items-center gap-8">
+          {/* Search bar */}
+          <label className="input input-bordered flex items-center gap-2 rounded-full">
+            <input
+              type="text"
+              className="grow"
+              placeholder="Search"
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              className="h-4 w-4 opacity-70"
+            >
+              <path
+                fillRule="evenodd"
+                d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </label>
+
           {/* text */}
           <div className="text-center space-y-8 px-2 ">
             <h2 className="md:text-5xl text-4xl font-bold md:leading-snug leading-snug">
@@ -100,11 +134,11 @@ const Menu = () => {
               Where Each Plate Weaves a Story of Culinary Mastery and Passionate
               Craftsmanship
             </p>
-            <Link to='/cart-page'>
-            <button className="btn rounded-full bg-green text-white  font-semibold my-4 px-8">
-              Order Now
-            </button>
-          </Link>
+            <Link to="/cart-page">
+              <button className="btn rounded-full bg-green text-white  font-semibold my-4 px-8">
+                Order Now
+              </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -201,7 +235,6 @@ const Menu = () => {
 
         {/* item Cards */}
         <div className="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4">
-          {console.log('currentItems',currentItems)}
           {currentItems.map((item) => (
             <Cards key={item._id} item={item} />
           ))}
@@ -210,17 +243,19 @@ const Menu = () => {
 
       {/* Pagination */}
       <div className="flex justify-center my-8">
-        {
-          Array.from({length : Math.ceil(filteredItems.length / itemsPerPage)}).map((_, index)=>(
-            <button 
-              key={index+1}
-              onClick={() => paginate(index + 1)}
-              className={`mx-3 px-3 py-1 rounded-full ${currentPage === index + 1 ? "bg-green text-white" : "bg-gray-200"}`}
-            >
-              {index + 1}
-            </button>
-          ))
-        }
+        {Array.from({
+          length: Math.ceil(filteredItems.length / itemsPerPage),
+        }).map((_, index) => (
+          <button
+            key={index + 1}
+            onClick={() => paginate(index + 1)}
+            className={`mx-3 px-3 py-1 rounded-full ${
+              currentPage === index + 1 ? "bg-green text-white" : "bg-gray-200"
+            }`}
+          >
+            {index + 1}
+          </button>
+        ))}
       </div>
     </div>
   );

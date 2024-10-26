@@ -15,7 +15,6 @@ const getCartByEmail = async (req, res) => {
 //post a item when add to cart is clicked
 const addToCart = async (req, res) => {
     const { menuItemId, name, recipe, image, quantity, price, email } = req.body;
-    console.log("Menu id", menuItemId)
     try {
         //Check if item exists in cart 
         const existingCartItem = await Carts.findOne({ menuItemId, email })

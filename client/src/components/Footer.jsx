@@ -27,8 +27,8 @@ const Footer = () => {
         </nav>
         <nav>
           <h6 className="footer-title">Contact Us</h6>
-          <a className="link link-hover">Hyderabad</a>
-          <a className="link link-hover">+91 89564 xxxxx</a>
+          <a className="link link-hover">Shop No:1-25-65/A, Near Metro Station, SR Nagar, Hyderabad 5000038</a>
+          <a className="link link-hover">+91 62819 xxxxx</a>
           <a className="link link-hover">quickbite@gmail.com</a>
         </nav>
       </footer>

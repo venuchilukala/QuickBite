@@ -12,7 +12,6 @@ const YourQueries = () => {
     queryKey: ["queries"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/tickets?email=${user.email}`);
-      // console.log(res.data)
       return res.data;
     },
   });

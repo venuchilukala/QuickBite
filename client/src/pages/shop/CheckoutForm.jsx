@@ -22,7 +22,6 @@ const CheckoutForm = ({ price, cart }) => {
     }
 
     axiosSecure.post("/create-payment-intent", { price }).then((res) => {
-      // console.log(res.data.clientSecret)
       setClientSecret(res.data.clientSecret);
     });
   }, [price, axiosSecure]);
@@ -58,7 +57,6 @@ const CheckoutForm = ({ price, cart }) => {
       setCardError(error.message);
     } else {
       setCardError("success");
-      // console.log("[PaymentMethod]", paymentMethod);
     }
 
     const { paymentIntent, error: confirmError } =
@@ -75,7 +73,6 @@ const CheckoutForm = ({ price, cart }) => {
         console.log(confirmError)
       }
       if(paymentIntent.status === "succeeded"){
-        console.log(paymentIntent.id)
         setCardError(`Your transactionId id ${paymentIntent.id}`)
 
         //Payment info 
@@ -89,11 +86,9 @@ const CheckoutForm = ({ price, cart }) => {
           cartItems : cart.map(item => item._id),
           menuItems : cart.map(item => item.menuItemId)
         }
-        // console.log(paymentInfo)
       
         //Send paymentInfo to backend
         axiosSecure.post('/payments', paymentInfo).then(res =>{
-          console.log(res.data)
           alert("Payment is successful!")
           navigate('/orders')
         })

@@ -21,18 +21,15 @@ const UpdateProfile = () => {
 
   //image hosting
   const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-  // console.log(image_hosting_key)
   const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
   const onSubmit = async (data) => {
-    // console.log(data);
     const imageFile = { image: data.photoURL[0] };
     const hostingImg = await axiosPublic.post(image_hosting_api, imageFile, {
       headers: {
         "content-type": "multipart/form-data",
       },
     });
-    // console.log(hostingImg.data);
 
     const name = data.name;
     const photoURL = hostingImg.data.data.display_url;

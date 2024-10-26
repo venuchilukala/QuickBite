@@ -14,12 +14,9 @@ const ManageBookings = () => {
     queryKey: ["bookings"],
     queryFn: async () => {
       const res = await axiosSecure.get("/bookings");
-      // console.log(res.data);
       return res.data;
     },
   });
-
-  // console.log(bookings);
 
   //Handle Admin role
   const handleOrderConfirm = (booking) => {
@@ -63,7 +60,7 @@ const ManageBookings = () => {
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
-            <thead>
+            <thead className="bg-green text-white rounded-lg">
               <tr>
                 <th>#</th>
                 <th>User Email</th>

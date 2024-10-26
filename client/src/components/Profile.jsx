@@ -61,7 +61,7 @@ const Profile = (props) => {
               <a>Settings</a>
             </li>
             <li>
-              <Link to="/dashboard">Dashboard</Link>
+              <Link to="/dashboard/admin-stats">Dashboard</Link>
             </li>
             <li>
               <a onClick={handleLogout}>Logout</a>

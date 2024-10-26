@@ -17,6 +17,7 @@ import { MdDashboardCustomize } from "react-icons/md";
 import Login from "../components/Login";
 import useAuth from "../hooks/useAuth";
 import useAdmin from "../hooks/useAdmin";
+import { RiCustomerService2Line } from "react-icons/ri";
 
 const sharedLinks = (
   <>
@@ -103,9 +104,14 @@ const DashboardLayout = () => {
                   <FaEdit /> Manage Items
                 </Link>
               </li>
-              <li className="mb-3">
+              <li >
                 <Link to="/dashboard/users">
                   <FaUsers /> All Users
+                </Link>
+              </li>
+              <li className="mb-3">
+                <Link to="/dashboard/all-tickets">
+                  <RiCustomerService2Line /> All Tickets
                 </Link>
               </li>
               <hr />

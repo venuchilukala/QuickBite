@@ -1,10 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
     <div className="section-container bg-gradient-to-r from-[#FAFAFA] from-0% to-[#FCFCFC] to-100%">
       <div className="md:py-20 flex flex-col md:flex-row-reverse justify-between items-center gap-8">
-
         {/* images */}
         <div className="md:w-1/2">
           <img src="/images/home/banner.png" alt="banner" />
@@ -100,9 +100,11 @@ const Banner = () => {
             Where Each Plate Weaves a Story of Culinary Mastery and Passionate
             Craftsmanship
           </p>
-          <button className="btn rounded-full bg-green text-white py-2 px-8 font-semibold">
-            Order Now
-          </button>
+          <Link to='/cart-page'>
+            <button className="btn rounded-full bg-green text-white  font-semibold my-4 px-8">
+              Order Now
+            </button>
+          </Link>
         </div>
       </div>
     </div>

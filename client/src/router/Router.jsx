@@ -18,6 +18,7 @@ import PrivateRouter from "../PrivateRouter/PrivateRouter";
 import ManageBookings from "../pages/dashboard/admin/ManageBookings";
 import Contact from "../pages/dashboard/Contact";
 import YourQueries from "../pages/dashboard/YourQueries";
+import AllTickets from "../pages/dashboard/admin/AllTickets";
 
 const router = createBrowserRouter([
   //User Routes
@@ -105,6 +106,11 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:6001/menu/${params.id}`),
       },
+      {
+        path: "all-tickets",
+        element: <AllTickets/>
+      }
+      
     ],
   },
 ]);

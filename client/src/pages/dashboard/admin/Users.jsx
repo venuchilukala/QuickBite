@@ -16,9 +16,9 @@ const Users = () => {
   // console.log(users);
 
   //Handle Admin role
-  const handleMakeAdmin = (user) => {
+  const handleAdminStatus = (user) => {
     axiosSecure.patch(`/users/admin/${user._id}`).then((res) => {
-      alert(`${user.name} is now an admin`);
+      alert(`${user.name}'s admin status changed!`);
       refetch();
     });
   };
@@ -60,13 +60,18 @@ const Users = () => {
                   <td>{user.email}</td>
                   <td>
                     {user.role === "admin" ? (
-                      "Admin"
+                      <button
+                      onClick={() => handleAdminStatus(user)}
+                      className="btn btn-xs  bg-indigo-500 text-white"
+                    >
+                      Admin
+                    </button>
                     ) : (
                       <button
-                        onClick={() => handleMakeAdmin(user)}
-                        className="btn btn-xs btn-circle bg-indigo-500 text-white"
+                        onClick={() => handleAdminStatus(user)}
+                        className="btn btn-xs"
                       >
-                        <FaUsers />
+                        User
                       </button>
                     )}
                   </td>

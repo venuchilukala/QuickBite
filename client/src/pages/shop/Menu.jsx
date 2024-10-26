@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Cards from "../../components/Cards";
 import { FaFilter } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Menu = () => {
   const [menu, setMenu] = useState([]);
@@ -99,9 +100,11 @@ const Menu = () => {
               Where Each Plate Weaves a Story of Culinary Mastery and Passionate
               Craftsmanship
             </p>
-            <button className="btn rounded-full bg-green text-white py-2 px-8 font-semibold">
+            <Link to='/cart-page'>
+            <button className="btn rounded-full bg-green text-white  font-semibold my-4 px-8">
               Order Now
             </button>
+          </Link>
           </div>
         </div>
       </div>

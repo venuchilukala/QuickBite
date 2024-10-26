@@ -31,6 +31,7 @@ const paymentRoutes = require('./api/routes/paymentRoutes')
 const adminStats = require('./api/routes/adminStats')
 const getBookings = require('./api/routes/getBookings')
 const ticketRoutes = require('./api/routes/ticketRoutes')
+const allTickets = require('./api/routes/allTickets')
 
 app.use('/menu', menuRoutes)
 app.use('/carts', cartRoutes)
@@ -39,6 +40,7 @@ app.use('/payments', paymentRoutes)
 app.use('/admin-stats', adminStats)
 app.use('/bookings', getBookings)
 app.use('/tickets', ticketRoutes)
+app.use('/all-tickets', allTickets)
 
 /***************************************************************************************************************/
 
